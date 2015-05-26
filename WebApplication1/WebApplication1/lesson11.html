@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://code.angularjs.org/angular-1.0.1.js"></script>
+    <script>
+        
+        var app = angular.module("hesapla", []);
+
+        
+        app.service('calculate', function () {
+            this.ansver  = function (ilktarih, sontarih) { return a + b };
+           
+        });
+
+      
+            
+    </script>
+</head>
+<body>
+    <div ng-controller="hesapla">
+        <br /> Start Date: <input type="datetime" data-ng-model="ilktarih" />
+        <br /> End Date <input type="datetime" data-ng-model="sontarih" />
+        <br /> <button ng-click="calculate()">calculate</button><br />
+        </div>
+</body>
+</html>
