@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://code.angularjs.org/angular-1.0.1.js"></script>
+
+    <script>
+        var app = angular.module("MyApp", []);
+
+        app.controller("mainController",
+
+        function ($scope) {
+
+            
+            $scope.items = [];
+            $scope.checked = [];
+
+            
+            $scope.addItem = function () {
+
+                $scope.items.push({
+                    amount: $scope.itemAmount,
+                    name: $scope.itemName
+                });
+
+                
+                $scope.itemAmount = "";
+                $scope.itemName = "";
+
+            };
+
+            
+            $scope.toggleChecked = function (item, index) {
+                $scope.checked.push(item);
+                $scope.items.splice(index, 1);
+            };
+
+            
+            $scope.getTotalItems = function () {
+                return $scope.items.length;
+            };
+
+            
+            $scope.getTotalCheckedItems = function () {
+                return $scope.checked.length;
+            };
+        });
+
+
+
+
+    </script>
+</head>
+<body ng-app="MyApp">
+    <div id="MyApp" ng-controller="mainController">
+
+        <div id="AddItem">
+            <h3>Add Item</h3>
+
+            <input value="1" type="number" placeholder="1" ng-model="itemAmount">
+            <input value="" type="text" placeholder="Name of Item" ng-model="itemName">
+            <br />
+            <button ng-click="addItem()">Add to list</button>
+        </div>
+      
+        <div id="CheckedList">
+            <h3>Checked Items: {{getTotalCheckedItems()}}</h3>
+
+            <h4>Checked:</h4>
+
+            <table>
+                <tr ng-repeat="item in checked" class="item-checked">
+                    <td><b>amount:</b> {{item.amount}} -</td>
+                    <td><b>name:</b> {{item.name}} -</td>
+                    <td>
+                        <i>this item is checked!</i>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+       
+        <div id="UncheckedList">
+            <h3>Unchecked Items: {{getTotalItems()}}</h3>
+
+            <h4>Unchecked:</h4>
+
+            <table>
+                <tr ng-repeat="item in items" class="item-unchecked">
+                    <td><b>amount:</b> {{item.amount}} -</td>
+                    <td><b>name:</b> {{item.name}} -</td>
+                    <td>
+                        <button ng-click="toggleChecked($index)">check item</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+     
+    </div>
+</body>
+</html>

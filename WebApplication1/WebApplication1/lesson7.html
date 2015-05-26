@@ -1,39 +1,60 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://code.angularjs.org/angular-1.0.1.js"></script>  
+
+    <script type="text/javascript">
+        var app = angular.module("MyApp", []);
+
+          /*modull.config(function ($routeProvider) {
+              $routeProvider
+              .when('/', {
+                  controller: 'abc',
+                  templateUrl: 'partial/1.html'})
+              .when('/partial', {
+                  controller: 'modull',
+                  templateUrl: 'partial/2.html'
+              })
+              otherwise({ redirectTo: '/' });
+
+
+          });*/
+
+       
+
+        app.controller("mainController",
+
+        function ($scope) { 
+
+            $scope.customers = [{ name: 'ismet', city: 'istanbul' },
+                         { name: 'ahmet', city: 'karabük' },
+                         { name: 'mehmet', city: 'ardahan' }];
+
+            $scope.addCustomer(function () {
+                $scope.customers.push({
+                    name: $scope.newCustomername,
+                    city: $scope.newCustomercity,
+
+                });
+            });
+        });
+
+    </script>
 </head>
 <body>
-    <div>
-        <script type="text/javascript">
-            var modull = angular.module("modull", []);
-            modull.config(function ($routeprovider) {
-                $routeprovider
-                .when('/', {
-                    controller: 'modull',
-                    templateUrl: '1.html'})
-                .when('/partial', {
-                    controller: 'modull',
-                    templateUrl: '2.html'
-                })
-                otherwise({ redirectTo: '/' });
 
-
-            });
-
-
-
-
-            modull.controller('kontrol', function ($scope) {
-                $scope.costumers = [{ name: 'ahmet', city: 'ankara' }, { name: 'veli', city: 'istanbul' }, { name: 'ismet', city: 'karabük' }];
-            });
-            
-        </script>
-
-
+    <div id="MyApp" ng-controller="mainController">
+        <br /> costumer  filter : <input type="text" data-ng-model="name" /><br />
+        <ul>
+            <li data-ng-repeat="cust in customers |filter:name |orderBy:name">{{cust.name}} : {{cust.city}}</li>
+        </ul>
+        <br /> costumer name :<input type="text" ng-model="newCustomername" /><br />
+        <br /> costumer city : <input type="text" ng-model="newCustomercity" /><br />
+        <br /> <button ng-click="addCustomer()">add customer</button><br />
+       
 
     </div>
-   
 </body>
 </html>
