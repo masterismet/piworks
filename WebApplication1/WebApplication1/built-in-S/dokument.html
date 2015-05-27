@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://code.angularjs.org/angular-1.0.1.js"></script>
+    <script>
+        angular.module('dokumanornek', [])
+        .controller('dokumankontrol', ['$scope', '$document', function ($scope, $document) {
+    $scope.title = $document[0].title;
+    $scope.windowTitle = angular.element(window.document)[0].title;
+}]);
+
+
+    </script>
+</head>
+<body ng-app="dokumanornek">
+    <div ng-controller="dokumankontrol">
+        <p>$dokumant title: <b ng-bind="title"></b></p>
+        <p>windows.dokument title :<b ng-bind="windowTitle"></b></p>
+
+    </div>
+
+</body>
+</html>
