@@ -3,25 +3,48 @@
 <head>
     <title></title>
     <script src="https://code.angularjs.org/angular-1.0.1.js"></script>
-    <script>
-        
-        var app = angular.module("hesapla", []);
+    <script src="Scripts/moment.js"></script>
+   <script>
+       var app = angular.module('app', []);v
 
-        
-        app.service('calculate', function () {
-            this.ansver  = function (ilktarih, sontarih) { return a + b };
-           
-        });
+    app.service('MathService', function () {
+        this.gunsayısı = function (a, b) { return a - b };
 
-      
-            
+    });
+
+    app.service('CalculatorService', function (MathService) {
+
+        this.farkı = function (a,b) { return MathService.gunsayısı(a, b); };
+        
+
+    });
+
+    app.controller('CalculatorController', function ($scope, CalculatorService) {
+
+        $scope.calculata = function () {
+            $scope.answer = CalculatorService.farkı($scope.ilktarih,$scope.sontarih);
+        }
+
+    });
+
+       /*var a = moment([2007, 0, 28]);
+        var b = moment([2007, 0, 29]);
+        a.from(b) // "a day ago"*/
     </script>
+
+        
+
+    
 </head>
 <body>
-    <div ng-controller="hesapla">
-        <br /> Start Date: <input type="datetime" data-ng-model="ilktarih" />
-        <br /> End Date <input type="datetime" data-ng-model="sontarih" />
-        <br /> <button ng-click="calculate()">calculate</button><br />
+    <div ng-app="app">
+        <div ng-controller="CalculatorController">
+            <br /> Start Date: <input type="number" data-ng-model="ilktarih" />
+            <br /> End Date <input type="number" data-ng-model="sontarih" />
+            <br /> <button ng-click="calculate()">calculate</button><br />
+            <div>Answer: {{answer}}</div>
         </div>
+    </div>
 </body>
 </html>
+

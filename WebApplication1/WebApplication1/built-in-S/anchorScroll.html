@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title></title>
+    <script src="https://code.angularjs.org/angular-1.0.1.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-rc.2/angular.min.js"></script>
+    <style type="text/css">
+        #scrollArea {
+            height: 280px;
+            overflow: auto;
+        }
+
+        #bottom {
+            display: block;
+            margin-top: 2000px;
+        }
+
+    </style>
+    <script>
+        angular.module('anchorScrollExample', [])
+.controller('ScrollController', ['$scope', '$location', '$anchorScroll', function ($scope, $location, $anchorScroll) {
+      $scope.gotoBottom = function () {
+          $location.hash('bottom');
+          $anchorScroll();
+      };
+  }]);
+
+
+    </script>
+</head>
+<body ng-app="anchorScrollExample">
+
+    <div id="scrollArea" ng-controller="ScrollController">
+        <a ng-click="gotoBottom()">Go to bottom</a>
+        <a id="bottom"></a> You're at the bottom!
+    </div>
+
+</body>
+</html>

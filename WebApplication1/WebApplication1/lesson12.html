@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://code.angularjs.org/angular-1.0.1.js"></script>
+    <script src="Scripts/moment.js"></script>
+
+    <script>
+        var app = angular.module('app', []);
+                    app.service('CalculatorService', function () {
+
+                this.square = function (a, b) {
+                  var x = moment(a);
+                  var y = moment(b);
+                  //var z = x.from(y);
+                  return x.diff(y, 'days');
+                };
+           
+
+        });
+
+        app.controller('CalculatorController', function ($scope, CalculatorService) {
+
+            $scope.doSquare = function () {
+                $scope.answer = CalculatorService.square($scope.date1,$scope.date2);
+            }
+
+           
+        });
+    </script>
+</head>
+<body>
+
+    <div ng-app="app">
+        <div ng-controller="CalculatorController">
+           
+            <input type="date" ng-model="date1">
+            <input type="date" ng-model="date2" />
+            <button ng-click="doSquare()">hesapla</button>
+            
+
+            <div>Answer: {{answer}}</div>
+        </div>
+    </div>
+
+</body>
+</html>
