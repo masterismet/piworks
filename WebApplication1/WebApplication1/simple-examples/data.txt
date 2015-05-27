@@ -1,0 +1,22 @@
+[
+{
+"Name" : "ismet",
+"RollNo" : 101,
+"Percentage" : "80%"
+},
+{
+"Name" : "ahmet",
+"RollNo" : 201,
+"Percentage" : "70%"
+},
+{
+"Name" : "veli",
+"RollNo" : 191,
+"Percentage" : "75%"
+},
+{
+"Name" : "xyz",
+"RollNo" : 111,
+"Percentage" : "77%"
+}
+]

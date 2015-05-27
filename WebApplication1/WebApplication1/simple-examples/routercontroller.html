@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+</head>
+<body>
+    <div ng-app="myapp">
+
+        <br /> <a href="#addStudent">add</a><br />
+        <br /> <a href="#showstudents">show</a><br />
+
+
+        <div ng-view></div>
+        <script type="text/ng-template" id="addStudent.htm">
+            <h2> Add Student </h2>
+            {{message}}
+        </script>
+        <script type="text/ng-template" id="viewStudents.htm">
+            <h2> View Students </h2>
+            {{message}}
+        </script>
+    </div>
+        <script>
+            var myapp = angular.module("myapp", ['ngRoute']);
+            myapp.config('routeProvider', function (routeProvider) {
+                $routeProvider.
+                when('/addStudent', {
+                    templateUrl: 'addStudent.htm',
+                    controller: 'AddStudentController'
+                }).
+                when('/viewStudents', {
+                    templateUrl: 'viewStudents.htm',
+                    controller: 'ViewStudentsController'
+                }).
+                otherwise({ redirectTo: '/addStudent' });
+
+            });
+            myapp.controller('AddStudentController', function ($skope) {
+                $skope.message = "first message";
+            });
+            myapp.controller('ViewStudentsController', function ($skope) {
+                $skope.message = "second message";
+            });
+
+        </script>
+       
+   
+
+</body>
+</html>
