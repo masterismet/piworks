@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<head>
+    <title></title>
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("dayController", function ($scope) {
+            var dayNames = ["sunday", "monday", "thursday", "wednesday", "thuesday", "friday", "saturday"];
+            $scope.day = dayNames[new Date().getDay()];
+            
+        });
+        app.controller("tomarrowController", function ($scope) {
+            var dayNames = ["sunday", "monday", "thursday", "wednesday", "thursday", "friday", "saturday"];
+            $scope.tomarrow = dayNames[(new Date().getDay() + 1) % 7];
+        });
+      
+          app.directive("highlight", function () {
+                return function (scope, element, attrs) {
+                    if (scope.day == attrs["highlight"]) {
+                        element.css("color", "red");
+                    }
+                }
+          });
+          app.directive("highlight2", function () {
+              return function (scope, element, attrs) {
+                  if (scope.tomarrow== attrs["highlight2"]) {
+                      element.css("color", "green");
+                  }
+              }
+          });
+          app.filter("dayName", function () {
+              var dayNames=["sunday","monday","thursday","wednesday","thursday","friday","sunday"];
+              return function(input){ return angular.isNumber(input)?dayNames[input]:input; };
+        
+    </script>
+</head>
+<body>
+
+    <div>
+        <span ng-controller="dayController" highlight="thuesday">today: {{day|| "(unknown)" |filter:uppercase|dayName}}</span><br />
+        <span ng-controller="tomarrowController" highlight2=" friday">tomarrow: {{tomarrow |"(unknown)"|dayName}}</span>
+
+
+    </div>
+
+</body>
+</html>
