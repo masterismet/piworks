@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("studentController", function ($scope, $http) {
+            var url = "data.txt";
+            $http.get(url).success(function (response) { $scope.students = response; })
+        });
+
+
+    </script>
+</head>
+<body ng-app="myapp">
+    <br />
+    <div ng-controller="studentController">
+        <div data-ng-repeat="student in students">
+
+            student name:{{student.Name}}
+            <br />
+            student soyad:{{student.RollNo}}
+            <br />
+            student persentage:{{student.Percentage}}
+            <br /><br />
+        </div>
+    </div>
+
+
+</body>
+</html>

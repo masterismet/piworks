@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title></title>
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script>
+        var app = angular.module("exampleApp", []);
+        app.controller("defaultCtrl", function ($scope, $exceptionHandler) {
+            $scope.throwEx = function () {
+                try {
+                    throw new Error("Triggered Exception");
+                } catch (ex) {
+                    $exceptionHandler(ex.message, "Button Click")
+                };
+            };
+
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <br /><button ng-click="throwEx()">Throw Expection</button>
+
+</body>
+</html>

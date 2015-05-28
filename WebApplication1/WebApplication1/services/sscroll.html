@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://code.angularjs.org/angular-1.0.1.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-rc.2/angular.min.js"></script>
+    <script>
+        angular.module('myapp', [])
+.controller('skroll', ['$scope', '$location', '$anchorScroll',
+  function ($scope, $location, $anchorScroll) {
+           $scope.gotoBottom = function () {
+           $location.hash('bottom');
+
+          $anchorScroll();
+      };
+  }]);
+
+
+    </script>
+</head>
+<body ng-app="myapp">
+    
+        <div ng-controller="skroll">
+            <a ng-click="gotoBottom()" style="height: 280px; overflow: auto;">go to bottom</a><br />
+            <a ng-click="" style=" display: block; margin-top: 2000px;", id="bottom">here is bottom</a>
+       </div>
+
+
+   
+
+</body>
+</html>

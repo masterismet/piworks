@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<head>
+    <title></title>
+    <script src="https://code.angularjs.org/angular-1.0.1.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-rc.2/angular.min.js"></script>
+    <script>
+        angular.module("myapp", [])
+        .controller("defaultCtrl", function ($scope, $window) {
+            $scope.displayAlert = function (msg) {
+                $window.alert(msg);
+            }
+        });
+    </script>
+</head>
+
+<body ng-controller="defaultCtrl" class="well">
+    <button class="btn btn-primary" ng-click="displayAlert('Clicked!')">Click Me</button>
+</body>
+</html>

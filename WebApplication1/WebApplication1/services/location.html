@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<head>
+    <title></title>
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script>
+
+
+    </script>
+</head>
+<body ng-controller="Maincontroller">
+    <div> {{url}}</div><br />
+    <button ng-click="setUrl('reset')">Reset</button><br />
+    <button ng-click="setUrl('path')">Path</button><br />
+    <button ng-click="setUrl('hash'')">Hash</button><br />
+    <button ng-click="setUrl('search')">Serarch</button><br />
+    <button ng-click="setUrl('url')">Url</button>
+    <br />
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("Maincontroller", function ($scope, $location) {
+            $scope.$on("$locationChangeSuccess", function (event, newurl) {
+                $scope.url = newurl;
+            });
+            $scope.setUrl = function (component) {
+                switch (component) {
+                    case "reset":
+                        $location.path("");
+                        $location.hash("");
+                        $location.search(""); break;
+                    case "path": $location.path("/cities/london"); break;
+                    case "hash":
+                        $location.hash("north"); break;
+                    case "search":
+                        $location.search("select", "hotels"); break;
+                    case "url":
+                        $location.url("/cities/london?select=hotls#north"); break;
+
+
+                };
+            };
+
+        });</script>
+</body>
+</html>
