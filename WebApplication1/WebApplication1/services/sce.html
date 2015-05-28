@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<head>
+    <title></title>
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("defaultCtrl", function ($scope) {
+            $scope.htmlData
+            = "<p>This is <b onmouseover=alert('Attack!')>dangerous</b> data</p>";
+
+        });
+
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div>
+        <br /><button ng-model="htmlData"> click</button>
+        <br /> {{htmlData}}
+    </div>
+
+</body>
+</html>
