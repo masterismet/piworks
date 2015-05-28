@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title></title>
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script>
+angular.module("exampleApp", [])
+.controller("defaultCtrl", function ($scope) {
+    $scope.price = "177.23";
+})
+.directive("evalExpression", function ($parse) {
+    return function(scope, element, attrs) {
+        scope.$watch(attrs["evalExpression"], function (newValue) {
+            try {
+                var expressionFn = $parse(scope.expr);
+                var result = expressionFn(scope);
+                if (result == undefined) {
+                    result = "No result";
+                }
+            }
+           catch (err) {
+                    result = "Cannot evaluate expression";
+                }
+                element.text(result);
+            });
+        }
+        });
+    </script>
+    </head>
+    <body ng-controller="defaultCtrl">
+
+    <p><input class="form-control" ng-model="expr" /></p>
+    <div>
+        Result: <span eval-expression="expr"></span>
+        </div>
+        
+        </body>
+        </html>
