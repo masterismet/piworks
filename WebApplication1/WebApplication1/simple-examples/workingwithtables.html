@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<head>
+    <title></title>
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("mycontroller", function ($scope) {
+            $scope.todos = [{ action: "doing x", complate: "false" },
+               { action: "doing y", complate: "true" },
+               { action: "doing z", complate: "false" },
+               { action: "doing k", complate: "true" }];
+            $scope.addNewItem = function (newItem) {
+                $scope.todos.push({
+                    action: newItem.action + "(" + newItem.location + ")", complate: false
+                })
+            };
+        });
+    </script>
+
+</head>
+<body>
+    <div ng-controller="mycontroller">
+        <span>{{(todos | filter: {complate: 'false'}).length}}</span>
+        <br />
+        <input ng-model="newTodo.action"><br />
+        <button ng-click="addNewItem(newTodo)"> Add </button>
+
+
+        <div class="col-xs-6">
+            <table class="table">
+                <thead>
+                    <tr><th>#</th><th>Action</th><th>Done</th></tr>
+                </thead>
+                <tr ng-repeat="item in todos">
+                    <td>{{$index + 1}}</td>
+                    <td>{{item.action}}</td>
+                    <td>
+                        <input type="checkbox" ng-model="item.complete">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+   
+</body>
+</html>
