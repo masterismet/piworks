@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<head>
+    <title></title>
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("Controller", function ($scope) {
+            $scope.products = [
+                { name: "apple", category: "fruits", price: "12" },
+                { name: "pears", category: "fruit", price: "5" },
+                {name:"paper", category:"vegetable", price:"7"}
+            ];
+        });
+        app.directive("unorderedlist", function () {
+            return function (scope, element, attrs) {
+                var data = scope.attrs["unorderedlist"];
+                if()
+            }
+        });
+
+    </script>
+</head>
+<body ng-controller="Controller">
+    <div>
+        producsts come to here
+
+    </div>
+    <div unordered-list="products">
+
+    </div>
+
+
+</body>
+</html>
