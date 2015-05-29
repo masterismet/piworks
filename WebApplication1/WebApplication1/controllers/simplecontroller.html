@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("simpleController", function ($scope) {
+            $scope.city = "London";
+            $scope.getCountry = function (city) {
+                switch (city) {
+                    case "London":
+                        return "UK";
+                    case "New York":
+                        return "USA";
+                }
+            }
+        });
+    </script>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="simpleController">
+        <p>the city is {{city}}</p><br />
+        <p>{{getCountry(city)||"unknown"}}</p>
+
+
+    </div>
+</body>
+</html>
