@@ -14,8 +14,14 @@
         });
         app.directive("unorderedlist", function () {
             return function (scope, element, attrs) {
-                var data = scope.attrs["unorderedlist"];
-                if()
+                var data = scope[attrs["unorderedlist"]];
+                if (angular.isArray(data)) {
+                    for (var i = 0; i < data.length; i++) {
+                        console.log("Item:" + data[i].name);
+
+                    }
+
+                }
             }
         });
 

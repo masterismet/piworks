@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<head>
+    <title></title>
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("defaultCtrl", function ($scope) {
+            $scope.products = [
+                 { name: "apple", category: "fruits", price: "12" },
+                 { name: "pears", category: "fruit", price: "5" },
+                 { name: "paper", category: "vegetable", price: "7" }
+            ];
+            $scope.incrementPrices=function(){ 
+                for(var i=0; i<$scope.products.length; i++){
+                    $scope.products[i].price ++;
+                }
+            }  
+         app.directive("unorderedList", function () {
+            return function (scope, element, attrs) {
+                var data = scope[attrs["unorderedList"]];
+                var propertyExpression = attrs["listProperty"];
+                if (angular.isArray(data)) {
+                    var listElem = angular.element("<ul>");
+                    element.append(listElem);
+                    for (var i = 0; i < data.length; i++) {
+                        listElem.append(angular.element('<li>')
+                        .text(scope.$eval(propertyExpression, data[i])));
+                    }
+                }
+            }
+        })
+    </script>
+   
+      
+</head>
+
+<body ng-controller="defaultCtrl">
+  
+            <h3>Products</h3>
+    <br />
+        
+               
+                <div unordered-list="products" list-property="price | currency"></div><br />
+                <button ng-click="incrementPrices()" /><br />
+    
+</body>
