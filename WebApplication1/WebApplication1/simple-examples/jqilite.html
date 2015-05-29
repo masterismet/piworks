@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<head>
+    <title></title>
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.directive("demoDirective", function () {
+            return function (scope, element, attrs) {
+                var items = element.children();
+                for (var i = 0; i < items.length; i++) {
+                    if(items.eq(i).text() == "Oranges")
+                        items.eq(i).css("color", "red");
+
+                }
+            }
+        })
+        app.controller("defaultController", function ($scope) { })
+    </script>
+</head>
+<body ng-controller="defaultController">
+        
+        <h3>Fruit</h3>
+        <ol demo-directive>
+            <li>Apples</li>
+            <li>Oranges</li>
+            <li>Pears</li>
+        </ol>
+    </body>
+</html>
