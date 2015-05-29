@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("todoController", function ($scope) {
+            $scope.todos = [{ action: "doing x", complate: "false" },
+                { action: "doing y", complate: "true" },
+                { action: "doing z", complate: "false" },
+                {action:"doing k", complate:"true"}
+            ];
+        });
+
+    </script>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="todoController">
+        <br />
+        <h3>daga come to here</h3>
+        <span ng-bind="todos.length"></span>
+        <div><br /> {{todos.length}}</div>
+        <div ng-bind-template="first: {{todos[0].action}} second: {{todos[1].action}}"></div>
+
+    </div>
+
+</body>
+</html>

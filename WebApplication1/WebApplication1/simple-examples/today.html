@@ -29,17 +29,14 @@
                   }
               }
           });
-          app.filter("dayName", function () {
-              var dayNames=["sunday","monday","thursday","wednesday","thursday","friday","sunday"];
-              return function(input){ return angular.isNumber(input)?dayNames[input]:input; };
-        
+          
     </script>
 </head>
 <body>
 
     <div>
-        <span ng-controller="dayController" highlight="thuesday">today: {{day|| "(unknown)" |filter:uppercase|dayName}}</span><br />
-        <span ng-controller="tomarrowController" highlight2=" friday">tomarrow: {{tomarrow |"(unknown)"|dayName}}</span>
+        <span ng-controller="dayController" highlight="thuesday">today: {{day || "(unknown)" }}</span><br />
+        <span ng-controller="tomarrowController" highlight2=" friday">tomarrow: {{tomarrow ||"(unknown)"}}</span>
 
 
     </div>
