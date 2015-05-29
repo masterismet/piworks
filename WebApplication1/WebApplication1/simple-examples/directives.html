@@ -14,6 +14,15 @@
         });
 
     </script>
+    <style>
+        .odd {
+            background-color: lightcoral;
+        }
+
+        .even {
+            background-color: lavenderblush;
+        }
+    </style>
 </head>
 <body ng-app="myapp">
     <div ng-controller="todoController">
@@ -22,6 +31,20 @@
         <span ng-bind="todos.length"></span>
         <div><br /> {{todos.length}}</div>
         <div ng-bind-template="first: {{todos[0].action}} second: {{todos[1].action}}"></div>
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Action</th>
+                    <th>Done</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="item in todos" ng-class="$odd ? 'odd' : 'even'">
+                <td>{{$index + 1}}</td>
+                <td ng-repeat="prop in item">{{prop}}</td>
+            </tr>
+        </table>
 
     </div>
 
