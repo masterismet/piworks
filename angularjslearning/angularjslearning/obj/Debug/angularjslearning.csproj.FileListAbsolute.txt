@@ -1,0 +1,6 @@
+C:\Users\hello\Desktop\piworksworkplace\piworks\angularjslearning\angularjslearning\bin\angularjslearning.dll.config
+C:\Users\hello\Desktop\piworksworkplace\piworks\angularjslearning\angularjslearning\bin\angularjslearning.dll
+C:\Users\hello\Desktop\piworksworkplace\piworks\angularjslearning\angularjslearning\bin\angularjslearning.pdb
+C:\Users\hello\Desktop\piworksworkplace\piworks\angularjslearning\angularjslearning\obj\Debug\angularjslearning.csprojResolveAssemblyReference.cache
+C:\Users\hello\Desktop\piworksworkplace\piworks\angularjslearning\angularjslearning\obj\Debug\angularjslearning.dll
+C:\Users\hello\Desktop\piworksworkplace\piworks\angularjslearning\angularjslearning\obj\Debug\angularjslearning.pdb

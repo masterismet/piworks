@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="mainController">
+        <student name="ismet"></student><br />
+
+        <student name="ahmet"></student><br />        
+    </div>
+<script>
+    var app = angular.module("myapp", []);
+    app.directive("student", function () {
+        var directive = {};
+        directive.restrict = "E";
+        directive.template = "Student: <b> {{student.name}}<br> Surname: {{student.surname}}";
+        directive.scope = { student: "=name" }
+        directive.compile = function (element, attributes) { element.css("border", "1px solid #cccccc") };
+
+        var linkFonction = function ($scope, element, attributes) {
+            element.html("Student:<b>" + $scope.student.name + " </b> , Surname " + $scope.student.surname + "<br><br>");
+            element.css("bacground-color", "red");
+            return linkFonction;
+        };
+        return directive;
+    });
+    app.controller("mainController", function ($scope) {
+        $scope.ismet = {};
+        $scope.ismet.name = "ismettiyus";
+        $scope.ismet.surname = "artuç";
+
+        $scope.ahmet = {};
+        $scope.ahmet.name = "ahmetiyus";
+        $scope.ahmet.surname = "kılınç";
+    });
+</script>
+</body>
+</html>

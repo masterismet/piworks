@@ -1,0 +1,6 @@
+[{"name":"sehmus",
+ "locale" : "diyarbakir" },
+{"name" :" mehmet",
+ "locale": "konya"},
+{"name":" ismet", 
+"locale" : "sirnak"}]

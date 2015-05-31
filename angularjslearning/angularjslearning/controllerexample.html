@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script> 
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("mycontroller", function ($scope) {
+            $scope.student = {
+                name: "Şeyhmus",
+                surname: "ghgjh",
+                fulname: function(){
+                    var object;
+                    object = $scope.student;
+                    return object.name + " ve " + object.surname;
+
+
+                }
+            };
+
+        });
+        app.controller("ogrencicontroller", function ($scope) {
+            $scope.ogrenci = {
+                   ad: "sss",
+                  soyad: "yyy",
+                tamad: function () {
+                    var obje;
+                    obje = $scope.ogrenci;
+                    return obje.ad + " - " + obje.soyad;
+
+                }
+            };
+
+        });
+    </script>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="mycontroller">
+       
+        <ul>
+            <li>{{student.name }}  +   {{student.surname}} <br /> {{student.fulname()}}</li>
+        </ul>
+
+    </div>
+
+        <div  ng-controller="ogrencicontroller">
+        <input ng-model="ogrenci.ad" /><br /><br />
+        <input ng-model="ogrenci.soyad" />
+        <br /><ul>
+            <li> {{ogrenci.tamad() }}</li>
+        </ul><br />
+
+    </div>
+</body>
+</html>
