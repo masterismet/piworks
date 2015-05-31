@@ -65,6 +65,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="builtinservices\consumingserviceexample.html" />
+    <Content Include="builtinservices\doomapiservices\documanserviceexample.html" />
+    <Content Include="builtinservices\doomapiservices\exeptionHandlerservice.html" />
+    <Content Include="builtinservices\doomapiservices\intervalserviceexample.html" />
+    <Content Include="builtinservices\doomapiservices\locationserviceexample.html" />
+    <Content Include="builtinservices\doomapiservices\windowsserviceexample.html" />
     <Content Include="controllerexample.html" />
     <Content Include="costumdirectivesexample.html" />
     <Content Include="dependencyinjectionexample.html" />
@@ -80,6 +86,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
