@@ -38,23 +38,21 @@
         </div>
         <div style="height:200px; width:400px">
             <script type="text/ng-template" id="exchangerate.htm">
-                <h2> exchange rate</h2>
-                <h2>money: {{money}}</h2>
-                <label>euro</label>
-                <label>dolar</label>
-                <label>tl</label>
-                Amount:<input type="number" ng-model="amount" /><br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 <button ng-click="euro"> EURO </button>
-                &nbsp;&nbsp;<button ng-click="dolar">DOLAR</button>
-                &nbsp;&nbsp;<button ng-click="tl">TL</button>
+                <div ng-controller="exchangeController">
+                    <h2> EXCHANGE RATE</h2>
+                    Dolar: <span eval-expression amount="Datavalue" tax="20"></span><br />
+                    Euro : <span eval-expression amount="Datavalue" tax="14"></span><br />
+                    Tl   : <span eval-expression amount="Datavalue" tax="34"></span><br />
 
-               
+                    Amount:<input type="number" ng-model="Datavalue" /><br />
+                </div>
+
             </script>
         </div>
 
     <script>
         var app = angular.module("myapp", ['ngRoute']);
+        
         app.config(function ($routeProvider) {
             $routeProvider.
             when('/stopwatch', {
@@ -69,11 +67,34 @@
             redirectTo: 'menu.htm'
         });
         });
+        //stop watch
         app.controller("StopwatchController", function ($scope) {
             $scope.message = "xxxx";
         });
+        //exchange 
         app.controller("exchangerateController", function ($scope) {
-            $scope.message = " yyyy ";
+            $scope.Datavalue = 101;
+        });
+        app.directive("evalExpression", function ($parse) {
+            var expressionFn = $parse("total");
+            return {
+                scope: {
+                    amount: "=amount",
+                    tax: "=tax"
+                },
+                link: function (scope, elemet, attrs) {
+                    scope.watch("amount", function (newValue) {
+                        var localdata = {
+                            total : Number(newValue) + Number(newValue)*Number(scope.tax)/100,
+                           
+                        }
+                        elemet.text(expressionFn, localdata);
+                    })
+
+                },
+
+
+            }
         });
 
 
