@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.14/angular-route.min.js"></script>
+</head>
+<body>
+    <div ng-app="myapp">
+        <div ng-view></div>
+        <ul>
+    <a href="#stopwatch">Stop Watch</a>&nbsp; &nbsp;
+    <a href="#exchangerate">Exchangerate</a>&nbsp;&nbsp;
+    <a href="evals.html"> Compile,</a>&nbsp;&nbsp;
+
+        </ul>
+        <script type="text/ng-template" id="#menu.htm">
+            <ul>
+    <a href="#stopwatch">Stop Watch</a>&nbsp;&nbsp;
+
+    <a href="#exchangerate">Exchangerate</a>&nbsp;&nbsp;
+
+    <a href="evals.html"> Compile,</a>&nbsp;&nbsp;
+
+            </ul>
+        </script>
+        <div style="height:200px; width:400px">
+            <script type="text/ng-template" id="stopwatch.htm">
+                <h2> stop watch</h2>
+                <h2> {{ watch}}</h2>
+                <button ng-model="run">RUN</button>&nbsp;
+                <button ng-model="pause">PAUSE</button>
+                <button ng-model="stop">STOP</button>&nbsp;
+
+                {{message}}
+            </script>
+        </div>
+        <div style="height:200px; width:400px">
+            <script type="text/ng-template" id="exchangerate.htm">
+                <h2> exchange rate</h2>
+                <h2>money: {{money}}</h2>
+                <label>euro</label>
+                <label>dolar</label>
+                <label>tl</label>
+                Amount:<input type="number" ng-model="amount" /><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <button ng-click="euro"> EURO </button>
+                &nbsp;&nbsp;<button ng-click="dolar">DOLAR</button>
+                &nbsp;&nbsp;<button ng-click="tl">TL</button>
+
+               
+            </script>
+        </div>
+
+    <script>
+        var app = angular.module("myapp", ['ngRoute']);
+        app.config(function ($routeProvider) {
+            $routeProvider.
+            when('/stopwatch', {
+                templateUrl: 'stopwatch.htm',
+                controller: 'StopwatchController'
+            }).
+        when('/exchangerate', {
+            templateUrl: 'exchangerate.htm',
+            controller: 'exchangerateController'
+        }).
+        otherwise({
+            redirectTo: 'menu.htm'
+        });
+        });
+        app.controller("StopwatchController", function ($scope) {
+            $scope.message = "xxxx";
+        });
+        app.controller("exchangerateController", function ($scope) {
+            $scope.message = " yyyy ";
+        });
+
+
+    </script>
+
+</body>
+</html>
