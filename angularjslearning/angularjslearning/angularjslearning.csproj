@@ -70,6 +70,8 @@
     <Content Include="builtinservices\doomapiservices\exeptionHandlerservice.html" />
     <Content Include="builtinservices\doomapiservices\intervalserviceexample.html" />
     <Content Include="builtinservices\doomapiservices\locationserviceexample.html" />
+    <Content Include="builtinservices\doomapiservices\logexample.html" />
+    <Content Include="builtinservices\doomapiservices\sceexample.html" />
     <Content Include="builtinservices\doomapiservices\windowsserviceexample.html" />
     <Content Include="controllerexample.html" />
     <Content Include="costumdirectivesexample.html" />

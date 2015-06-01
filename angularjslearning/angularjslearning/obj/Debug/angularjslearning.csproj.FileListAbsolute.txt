@@ -4,3 +4,9 @@ C:\Users\hello\Desktop\piworksworkplace\piworks\angularjslearning\angularjslearn
 C:\Users\hello\Desktop\piworksworkplace\piworks\angularjslearning\angularjslearning\obj\Debug\angularjslearning.csprojResolveAssemblyReference.cache
 C:\Users\hello\Desktop\piworksworkplace\piworks\angularjslearning\angularjslearning\obj\Debug\angularjslearning.dll
 C:\Users\hello\Desktop\piworksworkplace\piworks\angularjslearning\angularjslearning\obj\Debug\angularjslearning.pdb
+C:\Users\ismet.artuc\Desktop\workplace\piworks\angularjslearning\angularjslearning\bin\angularjslearning.dll.config
+C:\Users\ismet.artuc\Desktop\workplace\piworks\angularjslearning\angularjslearning\bin\angularjslearning.dll
+C:\Users\ismet.artuc\Desktop\workplace\piworks\angularjslearning\angularjslearning\bin\angularjslearning.pdb
+C:\Users\ismet.artuc\Desktop\workplace\piworks\angularjslearning\angularjslearning\obj\Debug\angularjslearning.csprojResolveAssemblyReference.cache
+C:\Users\ismet.artuc\Desktop\workplace\piworks\angularjslearning\angularjslearning\obj\Debug\angularjslearning.dll
+C:\Users\ismet.artuc\Desktop\workplace\piworks\angularjslearning\angularjslearning\obj\Debug\angularjslearning.pdb
