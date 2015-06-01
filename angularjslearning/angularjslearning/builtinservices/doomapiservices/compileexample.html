@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("myController", function ($scope) {
+            $scope.cities = ["aydın", "london", "new yourk"];
+        })
+        app.directive("evalExpression", function($compile) {
+            return function (scope, element, attrs) {
+                var content = "<ul><li ng-repeat='city in cities'>{{city}}</li></ul>"
+                var listElem = angular.element(content);
+                var compileFn = $compile(listElem);
+                compileFn(scope);
+                element.append(listElem);
+            }
+            });
+        </script>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="myController">
+        <span eval-expression></span>
+    </div>
+
+</body>
+</html>
