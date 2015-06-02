@@ -65,6 +65,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dynamic.html" />
     <Content Include="evals.html" />
     <Content Include="exchangerate.html" />
     <Content Include="index.html" />

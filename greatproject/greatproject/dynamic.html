@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="Site">
+<head>
+    <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script>
+        var Site = angular.module('Site', []);
+
+        var homeTpl = '<h2>Home</h2><p ng-bind-html-unsafe="links">Should be replaced</p>';
+        var artTpl = '<a href="#/">Home</a><h2 id="top" ng-bind="article.title">Article<h2><p ng-bind-html-unsafe="page.content">content</p>';
+
+        Site.config(function ($routeProvider) {
+            $routeProvider
+            .when('/', { template: homeTpl, controller: 'HomeController' })
+            .when('/article/:id', { template: artTpl, controller: 'ArticleController' })
+        });
+
+        Site.run(function ($rootScope, $location, $anchorScroll, $routeParams) {
+            $rootScope.$on('$routeChangeSuccess', function (newRoute, oldRoute) {
+                $location.hash($routeParams.scrollTo);
+                $anchorScroll();
+            });
+        })
+
+        function AppController($scope, $rootScope, $http, $location) {
+        }
+
+        function HomeController($scope) {
+            $scope.links = "<ol>" +
+              "<li><a href=\"#/article/1?scrollTo=InterestingStuff\" target=''>Article 1: Interesting stuff</a></li>" +
+              "<li><a href=\"#/article/1?scrollTo=ImportantStuff\" target=''>Article 1: Don't miss it stuff</a></li>" +
+              "</ol>";
+        }
+
+        function ArticleController($scope, $rootScope, $routeParams, $http) {
+            console.log('Route');
+            // Getting the slug from $routeParams
+            var slug = $routeParams.id;
+            $scope.$emit('routeLoaded', { slug: slug });
+            // $http.get('/university/article/' + slug).success(function (data) {
+            var data = [{
+                "id": "1",
+                "content": "<p>A lot of introduction, followed by something else</p>" +
+                "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" +
+                "<h1 id='InterestingStuff'>Interesting stuff in the middle</h1>" +
+                "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" +
+                "<h1 id='ImportantStuff'>Important stuff at the end</h1>",
+                "title": "New Polycom"
+            }]
+            $scope.article = data[0];
+            $scope.page = $scope.article;
+            // });
+        }
+    </script>
+
+</head>
+<body>
+    <!-- menü-->
+    <div style="position:fixed">
+        <th> first article</th><th>second article</th><th>thirdh article</th>
+    </div>
+    <div ng-controller="AppController" , style="margin-top:20%">
+        <div style="margin:auto; position:inherit">
+
+
+            <ng-view></ng-view>
+            <ul style="margin-left:50%">
+                <li><a href="index.html">come back to index</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+
