@@ -1,9 +1,43 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
 <head>
     <title></title>
-</head>
-<body>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.8/angular.min.js"></script>
+<script>
+        var mainMod = angular.module('myapp', []);
+        mainMod.controller('MainCtrl', ['$scope', '$parse', '$interpolate', '$compile',
+            function ($scope, $parse, $interpolate, $compile) {
+                $scope.name = 'Manish';
 
+                //$parse
+                $scope.parse = $parse('name')($scope);
+                $parse('name').assign($scope, 'Prakash');
+                $scope.parse_assign = $parse('name')($scope);
+
+                $scope.button_text = 'click me';
+                //$interpolate
+                var html = [' <button ng-click="click">{{button_text}}</button>'];
+                $scope.interpolate = $interpolate(html)($scope);
+
+                //$compile
+                $scope.compile = $compile(html)($scope);
+                //its best to use compile only in directives
+
+            }
+        ]);
+
+    </script>
+</head>
+<body ng-app='MainApp'>
+    <div ng-controller='MainCtrl'>
+        <div>
+            <div>Parse: {{parse}} - {{parse_assign}}</div>
+            <div>Interpolate: {{interpolate}}</div>
+            <div>Compile  : {{$compile}}</div>
+        </div>
+    </div>
+   
 </body>
 </html>
