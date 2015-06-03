@@ -4,41 +4,77 @@
     <title></title>
     <script src="http://code.angularjs.org/snapshot/angular.js"></script>
     <script>
-        angular.module("exampleApp", [])
-        .controller("defaultCtrl", function ($scope, $location, $anchorScroll) {
+        var app =angular.module("exampleApp", [])
+        app.controller("defaultCtrl", function ($scope, $location, $anchorScroll) {
                 $scope.show = function (id) {
                 $location.hash(id);
+                }
+               
+               
+        })
+        .directive("compileDirective", function ($compile) {
+            return function (scope, element, attrs) {
+                var content = "<b>compile direktifi</b>"
+                var listElem = angular.element(content);
+                var compileFn = $compile(listElem);
+                compileFn(scope);
+                element.append(listElem);
+
+            }
+        
+        });
+        app.directive("interpolateDirective", function ($scope, $interpolate) {
+            var template = $interpolate( 'Published by {{name}} on {{date}}' );
+
+            var data1 = { name: 'Mike', date: '2013-11-25' };
+            
+
+            // execute the function and pass it a data object to satisfy the interpolation values
+            var str1 = template( data1 );
+            
+
+            // str1 = "Published by Mike on 2013-11-25"
+            // str2 = "Published by Karen on 2013-11-24"
+        
+
+        });
+        app.directive("parseDirective", function ($parse) {
+            return function (scope, element, attrs) {
+                var content = "<b>compile direktifi</b>"
+                var listElem = angular.element(content);
+                var compileFn = $parse(listElem);
+                compileFn(scope);
+                element.append(listElem);
             }
         });
+       
     </script>
 </head>
 <body ng-controller="defaultCtrl">
-    <div style="position:fixed">
-        <button  ng-click="show('bottom')">Go to Bottom </button>
-        <button  ng-click="show('middle')">Go to Middle </button>
-        <button  ng-click="show('top')">Go to Top</button>
-        <form method="post" action="/index.html">
-            <button type="submit" >go to index</button>
-        </form>
+    <div style="position:fixed; margin-left:70%">
+        <button  ng-click="show('bottom')">Go to Bottom </button><br /><br />
+        <button  ng-click="show('middle')">Go to Middle </button><br /><br />
+        <button  ng-click="show('top')">Go to Top</button><br /><br />
+        <span><a href="index.html">come back to index</a></span><br /><br />
         
     </div>
     <div style="margin:auto">
         <p id="top"></p>
         <ul><li>top</li></ul>
+        <span compile-directive></span>
       
     </div>
-    <div style="margin-top:40%">
+    <div style="margin-top:30%" ng-controller="interpolatecontroller">
         <p id="middle"></p>
-        <ul><li>middle</li></ul>     
+        <ul><li>middle</li></ul> 
+      <span interpolate-directive></span>
+        
     </div>
     
-    <div style="margin-top:95%">
-        <ul>
-            <li>
-                <p id="bottom"></p>
-                bottom
-            </li>
-        </ul>
+    <div style="margin-top:60%">
+        <ul><li>
+                <p id="bottom"></p>bottom</li></ul>
+       <span parse-directive></span>
     </div>
 
 </body>
