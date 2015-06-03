@@ -8,26 +8,18 @@
         var app = angular.module('myapp', []);
         app.controller('MainCtrl', function ($scope, $parse, $interpolate, $compile) {
 
-                $scope.name = 'Manish';
+                $scope.name = 'Turkey';
 
                 //$parse
-                $scope.parse = $parse('name')($scope);
-                $parse('name').assign($scope, 'Prakash');
-                $scope.parse_assign = $parse('name')($scope);
-
-              /*  $scope.doSomething = function () {
-                    $scope.message = "Clicked!";
-                };*/
-
+                $scope.parse = $parse('name')($scope);           
                 $scope.button_text = 'click me';
-                //$interpolate
-                var html = ("<button ng-click='doSomething()'>{{label}}</button>");
-                $scope.interpolate = $interpolate(html)($scope);
+               //interpolate
+               // var html = ("<button ng-click='doSomething()'>{{label}}</button>");
+               // $scope.interpolate = $interpolate(html)($scope);
                
 
                 //$compile
-                $scope.compile = $compile(html)($scope);
-            //its best to use compile only in directives
+                $scope.compile = $compile(html)($scope);           
                 return {
                     link: function (scope, element) {
                         $interpolate(element.html('<button ng-click="myclick()"> click me </button>'));
@@ -45,24 +37,18 @@
                 }
             }
         });
-        app.directive("dirEktif", function () {
-            return {
-                link: function (scope, element) {
-                    element.html('<span> ismet artuççç</span>');
-                }
-            }
-        });
+        
 
     </script>
 </head>
 <body ng-app='MainApp'>
     <div ng-controller='MainCtrl'>
         <div>
-            <div>Parse: {{parse}} - {{parse_assign}}</div>
-            <div>Interpolate: {{interpolate}}</div>
+            <div>Parse: {{parse}}</div>
+           <!-- <div>Interpolate: {{interpolate}}</div>-->
             <div>Compile  : {{$compile}}</div>
             <div direk-tif></div>
-            <div dir-ektif></div>
+            
         </div>
     </div>
     <ul style="margin-left:50%">

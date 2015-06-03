@@ -82,7 +82,7 @@
         app.controller("exchangerateController", function ($scope) {
             $scope.Datavalue = 101;
         })
-        app.directive("evalExpression", function ($parse,$window,$log) {
+        app.directive("evalExpression", function ($parse,$window,$log,$q) {
            
             var expressionFn = $parse("total");
                 
@@ -104,10 +104,13 @@
                                 }
                                 element.text(expressionFn(scope, localData));
                                 window.console.log(' we have a variable "total", and ...');
+                                
                             }
                             else {
                                  $window.alert("not a valid input");                              
-                                window.console.log("the amount should not be lesss than 0 ");
+                                 window.console.log("the amount should not be lesss than 0 ");
+                                 response.data === 'object ';
+                                  return $q.reject(response.data);
                             }
                             
                         });

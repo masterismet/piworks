@@ -69,6 +69,7 @@
     <Content Include="evals.html" />
     <Content Include="exchangerate.html" />
     <Content Include="index.html" />
+    <Content Include="qkullanımı.html" />
     <Content Include="stopwatch.html" />
     <Content Include="stopwatch.js" />
     <Content Include="Web.config" />

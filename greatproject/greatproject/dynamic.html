@@ -4,15 +4,20 @@
     <title></title>
     <script src="http://code.angularjs.org/snapshot/angular.js"></script>
     <script>
-        var app =angular.module("exampleApp", [])
-        app.controller("defaultCtrl", function ($scope, $location, $anchorScroll) {
-                $scope.show = function (id) {
-                $location.hash(id);
-                }
-               
-               
-        })
-        .directive("compileDirective", function ($compile) {
+        var app = angular.module("exampleApp", []);        
+
+       
+
+
+app.controller("defaultCtrl", function ($scope, $location, $anchorScroll) {
+    $scope.show = function (id) {
+        $location.hash(id);
+    }
+
+
+});
+
+      app.directive("compileDirective", function ($compile) {
             return function (scope, element, attrs) {
                 var content = "<b>compile direktifi</b>"
                 var listElem = angular.element(content);
@@ -21,22 +26,27 @@
                 element.append(listElem);
 
             }
-        
+            function getData($timeout, $q) {
+                return function () {
+                    var defer = $q.defer()
+
+                    // simulated async function
+                    $timeout(function () {
+                        defer.resolve('data received!')
+                    }, 2000)
+
+                    return defer.promise
+                }
+            }
         });
         app.directive("interpolateDirective", function ($scope, $interpolate) {
-            var template = $interpolate( 'Published by {{name}} on {{date}}' );
-
-            var data1 = { name: 'Mike', date: '2013-11-25' };
-            
-
-            // execute the function and pass it a data object to satisfy the interpolation values
-            var str1 = template( data1 );
-            
-
-            // str1 = "Published by Mike on 2013-11-25"
-            // str2 = "Published by Karen on 2013-11-24"
-        
-
+            return function (scope, element, attrs) {
+                var content = "<b>compile direktifi</b>"
+                var listElem = angular.element(content);
+                var compileFn = $interpolate(listElem);
+                compileFn(scope);
+                element.append(listElem);
+            }
         });
         app.directive("parseDirective", function ($parse) {
             return function (scope, element, attrs) {
@@ -45,6 +55,7 @@
                 var compileFn = $parse(listElem);
                 compileFn(scope);
                 element.append(listElem);
+
             }
         });
        
@@ -64,7 +75,7 @@
         <span compile-directive></span>
       
     </div>
-    <div style="margin-top:30%" ng-controller="interpolatecontroller">
+    <div style="margin-top:30%">
         <p id="middle"></p>
         <ul><li>middle</li></ul> 
       <span interpolate-directive></span>
