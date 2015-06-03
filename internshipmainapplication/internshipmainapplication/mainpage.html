@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<head>
+    <title></title>
+    <script src="angular.min.js"></script>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <script src="general.js"></script>
+    <script></script>
+</head>
+<body ng-controller="maincontroller">
+    <div id="mainframe">
+        <div id="daymounth">
+            <span day-mounth></span><br />
+        </div>
+        <div id="hourday">
+            <b>Hour/Day</b><br />
+            <span hour-day></span>
+        </div>
+        <div ng-controller="mounthname">
+            <br /><br />
+            <span mounth-prop></span>
+        </div>
+    </div>
+</body>
+</html>
