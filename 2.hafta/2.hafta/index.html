@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.14/angular-route.min.js"></script>
+   
+  </head>
+<body ng-app="myapp">
+    <div style="margin-left:40%; position:relative">
+        <div ng-view></div>
+        <ul>
+            <a href="#stopwatch">Stop Watch</a>&nbsp; &nbsp;
+            <a href="#exchangerate">Exchangerate</a>&nbsp;&nbsp;
+            <a href="evals.html"> Compile,</a>&nbsp;&nbsp;
+            <a href="dynamic.html">dynamic page</a>
+
+        </ul>
+        <script type="text/ng-template" id="#menu.htm">
+            <div style="border:solid">
+                <ul>
+                    <a href="#stopwatch">Stop Watch</a>&nbsp;&nbsp;
+
+                    <a href="#exchangerate">Exchangerate</a>&nbsp;&nbsp;
+
+                    <a href="evals.html"> Compile,</a>&nbsp;&nbsp;
+
+                    <a href="dynamic.html">dynamic page</a>
+
+                </ul>
+            </div>
+        </script>
+        <div style="height:200px; width:400px">
+            <script type="text/ng-template" id="stopwatch.htm">
+                <div ng-controller="StopwatchController" ng-app="StopWatch">
+                    <p>
+                        <h2>  STOP WATCH<br /> </h2><h1><font color='blue'>{{swtime}}</font><br /></h1>
+
+                        <button type="button" data-ng-click="start()">START</button>
+                        <button type="button" data-ng-click="stopSw()">STOP</button>
+                        <button type="button" data-ng-click="resetSw()">RESET</button>
+                </div>
+
+            </script>
+        </div>
+        <div style="height:200px; width:400px">
+            <script type="text/ng-template" id="exchangerate.htm">
+                <div ng-controller="exchangerateController">
+                    <h2> EXCHANGE RATE</h2>
+                    Dolar: $<span eval-expression amount="Datavalue" tax="20"></span><br />
+                    Euro : €<span eval-expression amount="Datavalue" tax="14"></span><br />
+                    TL&nbsp;&nbsp;&nbsp;&nbsp;: TL<span eval-expression amount="Datavalue" tax="34"></span><br />
+
+                    Amount:<input type="number" ng-model="Datavalue" /><br />{{message}}
+                </div>
+
+            </script>
+        </div>
+    </div>
+    <script>
+        var app = angular.module("myapp", ['ngRoute']);
+        
+        app.config(function ($routeProvider) {
+            $routeProvider.
+            when('/stopwatch', {
+                templateUrl: 'stopwatch.htm',
+                controller: 'StopwatchController',
+                
+
+            }).
+        when('/exchangerate', {
+            templateUrl: 'exchangerate.htm',
+            controller: 'exchangerateController'
+        }).
+        otherwise({
+            redirectTo: 'menu.htm'
+        });
+        });
+                
+        //exchange 
+        app.controller("exchangerateController", function ($scope) {
+            $scope.Datavalue = 101;
+        })
+        app.directive("evalExpression", function ($parse,$window,$log,$q) {
+           
+            var expressionFn = $parse("total");
+                
+                return {
+                    scope: {
+                        amount: "=amount",
+                        tax: "=tax"
+                    },
+                    
+                    link: function (scope, element, attrs) {
+
+                        scope.$watch("amount", function (newValue) {
+                            if (scope.amount > 0 || scope.amount == null) {
+
+                                var localData = {
+                                    total: Number(newValue)
+                                    + (Number(newValue) * (Number(scope.tax) / 100)),
+                                   
+                                }
+                                element.text(expressionFn(scope, localData));
+                                window.console.log(' we have a variable "total", and ...');
+                                
+                            }
+                            else {
+                                 $window.alert("not a valid input");                              
+                                 window.console.log("the amount should not be lesss than 0 ");
+                                 response.data === 'object ';
+                                  return $q.reject(response.data);
+                            }
+                            
+                        });
+                    }
+                }
+            });
+
+
+        //stop watch
+          
+        app.controller('StopwatchController', ['$scope', '$interval',
+      function ($scope, $interval) {
+         
+          $scope.swtime = 0;
+          var stop;
+          $scope.start = function () {
+              
+              if ( angular.isDefined(stop) ) return;
+              stop = $interval(function() {
+                  if ($scope.swtime >= 0 ) {
+                      $scope.swtime = $scope.swtime +1;                     
+                  } 
+              }, 10);
+          };
+
+          $scope.stopSw = function() {
+              if (angular.isDefined(stop)) {
+                  $interval.cancel(stop);
+                  stop = undefined;
+              }
+          };
+
+          $scope.resetSw = function() {
+              $scope.swtime = 0;
+             
+          };
+
+          $scope.$on('$destroy', function() {
+             
+              $scope.stopSw();
+          });
+      }])
+   
+    .directive('myCurrentTime', ['$interval', 'dateFilter',
+      function($interval, dateFilter) {
+          
+          return function(scope, element, attrs) {
+              var format,  
+                  stopTime; 
+
+              function updateTime() {
+                  element.text(dateFilter(new Date(), format));
+              }
+
+              
+              scope.$watch(attrs.myCurrentTime, function(value) {
+                  format = value;
+                  updateTime();
+              });
+
+              element.on('$destroy', function() {
+                  $interval.cancel(stopTime);
+              });
+          }
+      }]);
+        </script>
+
+</body>
+</html>

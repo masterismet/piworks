@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9AA32725-049C-4034-94D7-26D5E18044BC}</ProjectGuid>
+    <ProjectGuid>{32BF74E8-22C7-4CDB-B4F0-E1730C945A4A}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>greatproject</RootNamespace>
-    <AssemblyName>greatproject</AssemblyName>
+    <RootNamespace>_2.hafta</RootNamespace>
+    <AssemblyName>2.hafta</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -67,11 +67,9 @@
   <ItemGroup>
     <Content Include="dynamic.html" />
     <Content Include="evals.html" />
-    <Content Include="exchangerate.html" />
     <Content Include="index.html" />
     <Content Include="qkullanımı.html" />
     <Content Include="stopwatch.html" />
-    <Content Include="stopwatch.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -90,9 +88,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50539</DevelopmentServerPort>
+          <DevelopmentServerPort>58787</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50539/</IISUrl>
+          <IISUrl>http://localhost:58787/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
