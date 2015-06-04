@@ -36,14 +36,20 @@ app.controller("maincontroller", function () {
             }
            
         });
-//  app.controller("dayMounths", function ($scope, $http,$interpolate) {
-        app.directive("dayMounths",function($scope,$http,$interpolate){
-            var url="a.txt";
-            $http.get(url).success(function (response) {
-            $scope.months = response;              
-            })
 
-            console.log("url okundu");
+       app.controller("dayMounths", function ($scope, $http,$interpolate) {      
+            $http.get("a.txt").then(function (response) {
+                $scope.products = [];
+                var productElems = angular.element(response.data.trim()).find("product");
+                for (var i = 0; i < productElems.length; i++) {
+                    var product = productElems.eq(i);
+                    $scope.products.push({
+                        name: product.attr("name"),
+                        day: product.attr("day"),
+                        
+                    });
+                }
+            })
         
         });
         /*        
