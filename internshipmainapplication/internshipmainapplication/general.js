@@ -1,5 +1,8 @@
 ﻿var app = angular.module("myapp", []);
-app.controller("maincontroller", function () {
+app.controller("maincontroller", function ($scope, $http) {
+    $http.get("mounth.txt").success(function (data) {
+        $scope.products = data;
+    });
 });
 
         app.directive("hourDay", function ($parse) {
@@ -32,14 +35,86 @@ app.controller("maincontroller", function () {
             }
 
         });
-        app.directive("mounthProp", function ($scope,$parse, $http) {
+   /*     app.directive("mounthProp", function ($scope, $interpolate, $http) {
             return function (scope, element, attrs) {
-                var url = "mounth.txt";
+                   var url = "mounth.txt";
                    $http.get(url).success(function (response) {
                     $scope.mounths = response;
-                });
+                   });
+                   var i = 0;
+                   while (i < 12) {
+                       var daysize = mounths[i].day;
+                       
+                       var k;
+                    
 
-                //var daysize = mounth.day;
+                       for (k = 0; k < daysize; k++) {
+                           var content = "<b>" +$scope.mounths[i].name + (k+1) + " </b>"
+                           var listElem = angular.element(content);
+                           var compileFn = $parse(listElem);
+                           compileFn(scope);
+                           element.append(listElem);
+                           
+                       }
+                       
+                       i = i + 1;
+
+
+                   }
+
+            }
+        });
+             /*
+
+                   var i=0;
+                   while (i < 12) {
+                       var daysize = mounths.day;
+                       var k ;
+                       for (k = 0; k < daysize; k++) {
+                           var content= "{{mounth}}-{{day}}";
+                           scope: {
+                                   mounth: "=name";
+                               day = k + 1;
+                           };
+                           var listElem = angular.element(content);
+                           var compileFn = $interpolate(listElem);
+                           compileFn(scope);
+                           element.append(listElem);
+
+
+
+                           }
+
+                       }                  
+                
+            }
+        });
+//var daysize = mounth.day;
+
+/*
+$scope.loadData = function () {
+$http.get("productData.json").success(function (data) {
+$scope.products = data;
+});
+}
+
+/////
+                return {
+scope: {
+amount: "=amount",
+tax: "=tax"
+},
+link: function (scope, element, attrs) {
+scope.$watch("amount", function (newValue) {
+var localData = {
+total: Number(newValue)
++ (Number(newValue) * (Number(scope.tax) /100))
+}
+element.text(interpolationFn(scope));
+});
+}
+}
+    ////////            
                 var i = 0;
                 while (i <=12) {
                     var content = "<b>" + $scope.mounth.day + " </b>"
@@ -53,4 +128,4 @@ app.controller("maincontroller", function () {
                 }
             }
 
-        });
+        */
