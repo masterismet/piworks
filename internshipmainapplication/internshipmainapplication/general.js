@@ -1,11 +1,9 @@
 ﻿var app = angular.module("myapp", []);
-app.controller("maincontroller", function ($scope, $http) {
-    $http.get("mounth.txt").success(function (data) {
-        $scope.products = data;
-    });
+app.controller("maincontroller", function () {    
+       
 });
 
-        app.directive("hourDay", function ($parse) {
+        app.directive("hourDay", function ($parse,$log) {
             return function (scope, element, attrs) {
                 var saat = 23;                
                 while (saat >=0) {
@@ -15,10 +13,12 @@ app.controller("maincontroller", function ($scope, $http) {
                     var compileFn = $parse(listElem);
                     compileFn(scope);
                     element.append(listElem);
-                    saat = saat - 1;                   
+                    saat = saat - 1;
+                    console.log("burası tamam");
                     
                 }
             }
+            
         });
         app.directive("dayMounth", function ($parse) {
             return function (scope, element, attrs) {
@@ -29,18 +29,47 @@ app.controller("maincontroller", function ($scope, $http) {
                     var compileFn = $parse(listElem);
                     compileFn(scope);
                     element.append(listElem);
-                   day = day +1;
+                    day = day + 1;
+                    console.log("burası tamam");
 
                 }
             }
-
+           
         });
-   /*     app.directive("mounthProp", function ($scope, $interpolate, $http) {
+//  app.controller("dayMounths", function ($scope, $http,$interpolate) {
+        app.directive("dayMounths",function($scope,$http,$interpolate){
+            var url="a.txt";
+            $http.get(url).success(function (response) {
+            $scope.months = response;              
+            })
+
+            console.log("url okundu");
+        
+        });
+        /*        
+
+          return function (scope, element, attrs) {
+                    var content = '{{mounth[1].name}}-{{mounth[1].day}}';
+                    var listElem = angular.element(content);
+                    var compileFn = $interpolate(listElem);
+                    compileFn(scope);
+                    element.append(listElem);                    
+                    console.log("interpolate işe yaradı ? burası tamam");                
+            }
+           console.log("listeye atıldı")
+        
+
+        
+
+      /*  app.directive("mounthProp", function ($scope, $interpolate, $http,$log) {
+            console.log("prop baş");
             return function (scope, element, attrs) {
-                   var url = "mounth.txt";
+                var url = "mounth.txt";
+                console.log("buraya kadar geldi")
                    $http.get(url).success(function (response) {
                     $scope.mounths = response;
                    });
+                   console.log("buraya kadar geldi")
                    var i = 0;
                    while (i < 12) {
                        var daysize = mounths[i].day;
@@ -99,7 +128,7 @@ $scope.products = data;
 }
 
 /////
-                return {
+return {
 scope: {
 amount: "=amount",
 tax: "=tax"

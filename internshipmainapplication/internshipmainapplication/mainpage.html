@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
 <head>
     <title></title>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
-    <script src="https://code.angularjs.org/1.3.14/angular-route.min.js"></script>
-   <!-- <script src="angular.min.js"></script>-->
+   <!--  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.14/angular-route.min.js"></script>-->
+   <script src="angular.min.js"></script>
     <link href="style.css" type="text/css" rel="stylesheet" />
     <script src="general.js"></script>
     <script></script>
@@ -18,13 +18,20 @@
             <b>Hour/Day</b><br />
             <span hour-day></span>
         </div>
-       
-       <tr ng-repeat="item in products">
-        <td>{{item.name}}</td>
-        <td>{{item.day}}</td>
-        </tr>
-            
+        <br /><b></b>
+        <div id="daymounths">
+            <b>day-mounth</b>
+            <span day-mounths></span>>
         </div>
 
+    <!--    <span mounth-prop></span> 
+        <table>
+            <tr ng-controller="mounthController" ng-repeat="mounth in mounths track by $index">
+                <td>{{mounth.name}}</td>
+                <td>{{mounth.day}}</td>
+            </tr>
+        </table> 
+        -->
+ </div>
 </body>
 </html>
