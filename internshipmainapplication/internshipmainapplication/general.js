@@ -51,8 +51,23 @@ app.controller("maincontroller", function ($scope, $http) {
                element.append(listElem);
                console.log("compile işe yaradı  burası tamam");
            }
-                
+            var text = scope    
                
+        });
+        app.controller("textController", function ($scope, $http) {
+            var url = "a.txt";
+            $http.get(url).success(function (response) {
+                $scope.gunler = response;
+            })
+            
+        });
+        app.factory("myfactory", function ($http) {
+            var monthdays = {};
+            monthdays = function () {
+
+
+            }
+            
         });
         
       /*  app.config(function ($interpolateProvider) {
