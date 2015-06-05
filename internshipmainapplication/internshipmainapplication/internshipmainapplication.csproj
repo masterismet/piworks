@@ -65,8 +65,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css4ms.css" />
     <Content Include="general.js" />
+    <Content Include="js4ms.js" />
     <Content Include="mainpage.html" />
+    <Content Include="multipleselection.html" />
     <Content Include="style.css" />
     <Content Include="testpage.html" />
     <Content Include="Web.config" />
