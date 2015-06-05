@@ -39,30 +39,21 @@ app.controller("maincontroller", function ($scope, $http) {
            
         });
 
-        app.directive("mounthDays", function ($compile, scope) {
+        app.directive("mounthDays", function ($compile) {
 
-            var i = 0;
-            while (i < 12) {
-                for (var j = 0; j < scope.mounthdays[i].day; j++) {
-                    comsole.log(scope.mounthdays[i].day);
-                }
-                i++;
-            }
-        });
-/*
+
            return function (scope, element, attrs) {
-               // var content = "<ul><li ng-repeat='text in mounthdays'>{{text.name}}-{{text.day}}</li></ul>"
-               var content = '"<ul><li>"+$scope.mounthdays[i].name +"<br>" + (j) +"</li></u>"';
+               var content = "<ul><li ng-repeat='text in mounthdays'>{{text.name}}-{{text.day}}</li></ul>"
+               //var content = '"<ul><li>"+$scope.mounthdays[i].name +"<br>" + (j) +"</li></u>"';
                var listElem = angular.element(content);
                var compileFn = $compile(listElem);
                compileFn(scope);
                element.append(listElem);
                console.log("compile işe yaradı  burası tamam");
            }
-                }
-                i++;
-            }
-        });*/
+                
+               
+        });
         
       /*  app.config(function ($interpolateProvider) {
             $interpolateProvider.startSymbol("!!");
