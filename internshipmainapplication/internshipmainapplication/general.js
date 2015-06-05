@@ -1,5 +1,7 @@
 ﻿var app = angular.module("myapp", []);
-app.controller("maincontroller", function () {    
+app.controller("maincontroller", function ($scope, $http) {
+    $http.get("a.txt").success(function (response) {
+    $scope.mounthdays=response});
        
 });
 
@@ -37,130 +39,54 @@ app.controller("maincontroller", function () {
            
         });
 
-       app.controller("dayMounths", function ($scope, $http,$interpolate) {      
-            $http.get("a.txt").then(function (response) {
-                $scope.products = [];
-                var productElems = angular.element(response.data.trim()).find("product");
-                for (var i = 0; i < productElems.length; i++) {
-                    var product = productElems.eq(i);
-                    $scope.products.push({
-                        name: product.attr("name"),
-                        day: product.attr("day"),
-                        
-                    });
+        app.directive("mounthDays", function ($compile, scope) {
+
+            var i = 0;
+            while (i < 12) {
+                for (var j = 0; j < scope.mounthdays[i].day; j++) {
+                    comsole.log(scope.mounthdays[i].day);
                 }
-            })
-        
-        });
-        /*        
-
-          return function (scope, element, attrs) {
-                    var content = '{{mounth[1].name}}-{{mounth[1].day}}';
-                    var listElem = angular.element(content);
-                    var compileFn = $interpolate(listElem);
-                    compileFn(scope);
-                    element.append(listElem);                    
-                    console.log("interpolate işe yaradı ? burası tamam");                
-            }
-           console.log("listeye atıldı")
-        
-
-        
-
-      /*  app.directive("mounthProp", function ($scope, $interpolate, $http,$log) {
-            console.log("prop baş");
-            return function (scope, element, attrs) {
-                var url = "mounth.txt";
-                console.log("buraya kadar geldi")
-                   $http.get(url).success(function (response) {
-                    $scope.mounths = response;
-                   });
-                   console.log("buraya kadar geldi")
-                   var i = 0;
-                   while (i < 12) {
-                       var daysize = mounths[i].day;
-                       
-                       var k;
-                    
-
-                       for (k = 0; k < daysize; k++) {
-                           var content = "<b>" +$scope.mounths[i].name + (k+1) + " </b>"
-                           var listElem = angular.element(content);
-                           var compileFn = $parse(listElem);
-                           compileFn(scope);
-                           element.append(listElem);
-                           
-                       }
-                       
-                       i = i + 1;
-
-
-                   }
-
+                i++;
             }
         });
-             /*
-
-                   var i=0;
-                   while (i < 12) {
-                       var daysize = mounths.day;
-                       var k ;
-                       for (k = 0; k < daysize; k++) {
-                           var content= "{{mounth}}-{{day}}";
-                           scope: {
-                                   mounth: "=name";
-                               day = k + 1;
-                           };
-                           var listElem = angular.element(content);
-                           var compileFn = $interpolate(listElem);
-                           compileFn(scope);
-                           element.append(listElem);
-
-
-
-                           }
-
-                       }                  
-                
-            }
-        });
-//var daysize = mounth.day;
-
 /*
-$scope.loadData = function () {
-$http.get("productData.json").success(function (data) {
-$scope.products = data;
-});
-}
-
-/////
-return {
-scope: {
-amount: "=amount",
-tax: "=tax"
-},
-link: function (scope, element, attrs) {
-scope.$watch("amount", function (newValue) {
-var localData = {
-total: Number(newValue)
-+ (Number(newValue) * (Number(scope.tax) /100))
-}
-element.text(interpolationFn(scope));
-});
-}
-}
-    ////////            
-                var i = 0;
-                while (i <=12) {
-                    var content = "<b>" + $scope.mounth.day + " </b>"
-                    var listElem = angular.element(content);
-                    var compileFn = $parse(listElem);
-                    compileFn(scope);
-                    element.append(listElem);
-                    i = i + 1;
-
-
+           return function (scope, element, attrs) {
+               // var content = "<ul><li ng-repeat='text in mounthdays'>{{text.name}}-{{text.day}}</li></ul>"
+               var content = '"<ul><li>"+$scope.mounthdays[i].name +"<br>" + (j) +"</li></u>"';
+               var listElem = angular.element(content);
+               var compileFn = $compile(listElem);
+               compileFn(scope);
+               element.append(listElem);
+               console.log("compile işe yaradı  burası tamam");
+           }
                 }
+                i++;
             }
+        });*/
+        
+      /*  app.config(function ($interpolateProvider) {
+            $interpolateProvider.startSymbol("!!");
+            $interpolateProvider.endSymbol("!!");
+        });
+        app.directive("mounthDays", function ($interpolate) {
+            var interpolationFn;
 
-        */
+                interpolationFn= $interpolate("The total is: !!amount | currency!! (including tax)");
+                return {
+                    scope: {
+                        amount: "=amount",
+                        tax: "=tax"
+                    },
+                    link: function (scope, element, attrs) {
+                        scope.$watch("amount", function (newValue) {
+                            var localData = {
+                                total: Number(newValue)
+                                + (Number(newValue) * (Number(scope.tax) / 100))
+                            }
+                            element.text(interpolationFn(scope));
+                        });
+                    }
+                }
+        });
+      
+     */

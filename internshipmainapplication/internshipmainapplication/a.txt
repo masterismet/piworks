@@ -1,14 +1,14 @@
 [
-{"name":"jan" ,"day":"31"},
-{"name":"feb" ,"day":"28"},
-{"name":"Mar" ,"day":"31"},
-{"name":"Apr" ,"day":"30"},
-{"name":"may" ,"day":"31"},
-{"name":"jun" ,"day":"30"},
-{"name":"Jul" ,"day":"31"},
-{"name":"Aug" ,"day":"31"},
-{"name":"Seb" ,"day":"30"},
-{"name":"Oct" ,"day":"31"},
-{"name":"Nov" ,"day":"30"},
-{"name":"Dec" ,"day":"31"}
+{"name":"jan" ,"day":31},
+{"name":"feb" ,"day":28},
+{"name":"Mar" ,"day":31},
+{"name":"Apr" ,"day":30},
+{"name":"may" ,"day":31},
+{"name":"jun" ,"day":30},
+{"name":"Jul" ,"day":31},
+{"name":"Aug" ,"day":31},
+{"name":"Seb" ,"day":30},
+{"name":"Oct" ,"day":31},
+{"name":"Nov" ,"day":30},
+{"name":"Dec" ,"day":31}
 ]

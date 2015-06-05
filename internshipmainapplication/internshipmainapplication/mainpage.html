@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
     <title></title>
    <!--  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
@@ -9,7 +9,7 @@
     <script src="general.js"></script>
     <script></script>
 </head>
-<body ng-controller="maincontroller">
+<body ng-controller="maincontroller" ng-app="myapp">
     <div id="mainframe">
         <div id="daymounth">
             <span day-mounth></span><br />
@@ -19,17 +19,14 @@
             <span hour-day></span>
         </div>
         <br /><b></b>
-   
 
-     
-        <table>
-            <tr ng-controller="mounthController" ng-repeat="mounth in mounths track by $index">
-                <td>{{mounth.name}}</td>
-                <td>{{mounth.day}}</td>
-            </tr>
-        </table> 
-        
+        <div id="mounthdays">
+            <!-- <span mounth-days></span>
+             !!mounthName!! - !!mounthDay!!-->
+        </div>
 
- </div>
+
+
+    </div>
 </body>
 </html>
