@@ -1,0 +1,9 @@
+particial: 30345 
+statistic: 30225
+tensör: 30647
+snt : 30568
+
+particial: pazartesi, sali ögleden sonra
+statistic: persembe cuma, sabahtan
+tensör analizi: çarsamba sabah, cuma ögleden sonra
+sanat: tüm çarsamba
