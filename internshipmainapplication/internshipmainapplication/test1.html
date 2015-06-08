@@ -6,22 +6,33 @@
     <script>
         var app = angular.module("myapp", []);
         app.controller("myController", function ($scope, $http) {
-            var url = "a.txt";
-            var days = [];
-            var datalenght=[];
-            $http.get(url).success(function (data) {
-                $scope.datalenght = data;
-                $scope.days.push(data);
-            })
-            //console.log(datalenght);
-
+            $scope.loadData = function () {
+                var config = {
+                    transformResponse: function (data, headers) {                        
+                            products = [];
+                            var productElems = angular.element(data.trim()).find("product");
+                            for (var i = 0; i < productElems.length; i++) {
+                                var product = productElems.eq(i);
+                                products.push({
+                                    name: product.attr("name"),
+                                    day: product.attr("day"),                                   
+                                });
+                            }
+                            return products;
+                        
+                    }
+                }
+                $http.get("a.txt", config).success(function (data) {
+                    $scope.products = data;
+                });
+            }
         });
     </script>
 </head>
 <body>
     <div ng-controller="myController">
-       <span ng-repeat="text in datalenght">{{text.name}}-{{text.day}}<br /></span>
-        <span ng-repeat="day in days">{{day.name}}-{{day.day}}</span>
+       <button ng-click="loadData()">xxx</button>
+        <span ng-repeat="text in products">{{text}}</span>
     </div>
 
 </body>

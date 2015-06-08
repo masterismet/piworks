@@ -73,6 +73,7 @@
     <Content Include="style.css" />
     <Content Include="test1.html" />
     <Content Include="test2.html" />
+    <Content Include="test3.html" />
     <Content Include="testpage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
