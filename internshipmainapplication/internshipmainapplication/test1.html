@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<head>
+    <title></title>
+    <script src="angular.min.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("myController", function ($scope, $http) {
+            var url = "a.txt";
+            var days = [];
+            var datalenght=[];
+            $http.get(url).success(function (data) {
+                $scope.datalenght = data;
+                $scope.days.push(data);
+            })
+            //console.log(datalenght);
+
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="myController">
+       <span ng-repeat="text in datalenght">{{text.name}}-{{text.day}}<br /></span>
+        <span ng-repeat="day in days">{{day.name}}-{{day.day}}</span>
+    </div>
+
+</body>
+</html>

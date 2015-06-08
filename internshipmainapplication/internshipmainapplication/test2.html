@@ -7,18 +7,25 @@
         var app = angular.module("myapp", []);
         app.controller("myController", function ($scope, $http) {
             var url;
-            var mounths;
+            var mounths=[];
             var dayl;
-            var name;
+           // var name;
             $http.get(url).success(function (response) {
-                mounths = response;
+                mounths.push(response);
             })
+            $scope.setDay = function () {
+                $scope.area = mounths[0].day;
+                console.log(mounths[0].name);
+                console.log(mounths[1].day);
+            };
+            
+            console.log("response oldu");
             $scope.getName= function(){
-                $scope.name = "ismet";
+                $scope.name = "ismet"
             }
         });
-        dayl = mounth[0].day;
-        console.log(dayl);
+        
+        
     </script>
 </head>
 <body>
@@ -39,6 +46,10 @@
                 <th ng-click="getName()" style="border:2px"> isim= {{name}}</th>
                 <th ng-click="getName()"style="border:2px"> isim= {{name}}</th>
             </tr>
+            <tr>
+                <th ng-click="setDay"> value {{area}}</th>
+            </tr>
+            
         </table>
 
 
