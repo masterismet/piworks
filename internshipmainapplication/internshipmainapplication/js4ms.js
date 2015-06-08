@@ -1,4 +1,6 @@
-﻿// Click coordinates
+﻿
+window.onload = function () {
+// Click coordinates
 var x1, x2, y1, y2;
 
 //Variable indicates wether a mousedown event within your selection happend or not
@@ -126,5 +128,7 @@ function matchPos(xmiddle, ymiddle) {
     } else {
         return false;
     }
+
+}
 
 }

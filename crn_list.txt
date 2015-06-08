@@ -1,0 +1,10 @@
+particial: 30345 
+statistic: 30225
+snt : 30568
+dnk: 30687
+
+
+particial: pazartesi, sali ögleden sonra
+statistic: persembe cuma, sabahtan
+sanat: tüm çarsamba
+dnk: çarþamba tüm gün

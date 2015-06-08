@@ -54,45 +54,5 @@ app.controller("maincontroller", function ($scope, $http) {
             var text = scope    
                
         });
-        app.controller("textController", function ($scope, $http) {
-            var url = "a.txt";
-            $http.get(url).success(function (response) {
-                $scope.gunler = response;
-            })
-            
-        });
-        app.factory("myfactory", function ($http) {
-            var monthdays = {};
-            monthdays = function () {
-
-
-            }
-            
-        });
         
-      /*  app.config(function ($interpolateProvider) {
-            $interpolateProvider.startSymbol("!!");
-            $interpolateProvider.endSymbol("!!");
-        });
-        app.directive("mounthDays", function ($interpolate) {
-            var interpolationFn;
-
-                interpolationFn= $interpolate("The total is: !!amount | currency!! (including tax)");
-                return {
-                    scope: {
-                        amount: "=amount",
-                        tax: "=tax"
-                    },
-                    link: function (scope, element, attrs) {
-                        scope.$watch("amount", function (newValue) {
-                            var localData = {
-                                total: Number(newValue)
-                                + (Number(newValue) * (Number(scope.tax) / 100))
-                            }
-                            element.text(interpolationFn(scope));
-                        });
-                    }
-                }
-        });
-      
-     */
+    

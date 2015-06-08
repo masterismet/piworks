@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+<head>
+    <title></title>
+    <script src="angular.min.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("myController", function ($scope) {
+            $scope.getName= function(){
+                $scope.name = "ismet";
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <div ng-controller="myController">
+        <table>
+            <tr>
+                <th ng-click="getName()" style=" border:2px"> isim = {{name}}</th>
+                <th ng-click="getName()" style="border:2px"> isim= {{name}}</th>
+                <th ng-click="getName()" style="border:2px"> isim= {{name}}</th>
+            </tr>
+            <tr>
+                <th ng-click="getName()" style=" border:2px"> isim = {{name}}</th>
+                <th ng-click="getName()" style="border:2px"> isim= {{name}}</th>
+                <th ng-click="getName()" style="border:2px"> isim= {{name}}</th>
+            </tr>
+            <tr>
+                <th ng-click="getName()" style=" border:2px"> isim = {{name}}</th>
+                <th ng-click="getName()" style="border:2px"> isim= {{name}}</th>
+                <th ng-click="getName()" style="border:2px"> isim= {{name}}</th>
+            </tr>
+        </table>
+
+
+    </div>
+
+</body>
+</html>
