@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js" data-semver="2.0.3" data-require="jquery@*"></script>
+    <link data-require="jqueryui@*" data-semver="1.10.0" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
+    <script data-require="jqueryui@*" data-semver="1.10.0" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+    <script data-require="angular.js@1.2.11" data-semver="1.2.11" src="http://code.angularjs.org/1.2.11/angular.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="angular.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="TempController">
+        <div ui-selectable doc-array="documents">
+            <div class="parent" ng-repeat="document in documents">
+                <span>{{document}}</span>
+                <span ng-click="dosomething($index)">Clicke me</span>
+            </div>
+<pre>{{selectedItems|json}}</pre>
+            <button ng-click="clearSelection()">Cancel</button>
+        </div>
+    </div>
+</body>
+</html>

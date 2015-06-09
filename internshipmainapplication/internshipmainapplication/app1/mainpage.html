@@ -8,10 +8,17 @@
     <script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
     <script type="text/javascript" src="js4ms.js"></script>
     <script src="general.js"></script>   
+  
 </head>
 <body ng-controller="maincontroller" ng-app="myapp">
-    <div id="mainframe">
-        <div style=" float: left; padding: 10px; margin:auto">
+    <div style=" line-height:30px;
+             background-color:#eeeeee;
+             float:left;
+             padding:5px;
+             margin:auto;">
+        <span hour-day></span>
+    </div>  
+        <div style=" float:left; padding: 10px;">
             <div onmousedown="return false" id="YDR-Frame" class="frame">
                 <table id="selective" style="border:20px;">
                     <span day-mounth></span>
@@ -19,20 +26,8 @@
                 <div id="selection" class="selectiondiv"></div>
             </div>
         </div> 
-        <div style=" line-height:30px;
-             background-color:#eeeeee;
-             float:right;
-             padding:5px;
-             margin:auto;">
-            <span hour-day></span>
-        </div>   
+         
 
-        
-            
-            
-        
-
-
- </div>
+     
 </body>
 </html>

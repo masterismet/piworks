@@ -38,29 +38,49 @@ app.controller("maincontroller",function ($scope) {
                 { "name": "Dec", "day": 31 }];           
 
             return function (scope, element, attrs) {
-                var i,j=0;
-                while (j < 12) {
-                    var content = '<table><tr>'; 
-                    var listElem = angular.element(content);
-                    var compileFn = $parse(listElem);
-                    compileFn(scope);
-                    element.append(listElem);
-                for(i=0;i<mounthdays[j].day; i++){
-               
-                    var content = '<td style="width:20px" class="mytable"> ismet &nbsp; </td>';   
-                    var listElem = angular.element(content);
-                    var compileFn = $parse(listElem);
-                    compileFn(scope);
-                    element.append(listElem);
-                    
-                }
-                var content = '</table></tr>';
+                var i, j = 0;
+                var content = '<table>';
                 var listElem = angular.element(content);
                 var compileFn = $parse(listElem);
                 compileFn(scope);
                 element.append(listElem);
-                j=j+1;
-                }                
+                while (j < 12) {                    
+                for(i=0;i<mounthdays[j].day; i++){
+                    var k = 0;
+                   // var content = '<th><tr>' + mounthdays[j].name +'</tr>';
+
+                    var content = '<th>';
+                    var listElem = angular.element(content);
+                    var compileFn = $parse(listElem);
+                    compileFn(scope);
+                    element.append(listElem);
+                    console.log("th çalıştı")
+                    while(k<24){
+                    var content = '<li class="mytable"> ' +k+'</li>';   
+                    var listElem = angular.element(content);
+                    var compileFn = $parse(listElem);
+                    compileFn(scope);
+                    element.append(listElem);
+                    k++;
+                   
+                    }
+                    console.log(j);
+                    var content = '</th>';
+                    var listElem = angular.element(content);
+                    var compileFn = $parse(listElem);
+                    compileFn(scope);
+                    element.append(listElem);
+                   
+                }
+                
+                j = j + 1;
+                
+                }
+                var content = '</table>';
+                var listElem = angular.element(content);
+                var compileFn = $parse(listElem);
+                compileFn(scope);
+                element.append(listElem);
 
    } // end of return
  });

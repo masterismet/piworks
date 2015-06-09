@@ -65,12 +65,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css4ms.css" />
-    <Content Include="general.js" />
-    <Content Include="js4ms.js" />
-    <Content Include="mainpage.html" />
-    <Content Include="multipleselection.html" />
-    <Content Include="style.css" />
+    <Content Include="app1\css4ms.css" />
+    <Content Include="app1\general.js" />
+    <Content Include="app1\js4ms.js" />
+    <Content Include="app1\mainpage.html" />
+    <Content Include="app1\multipleselection.html" />
+    <Content Include="app1\style.css" />
+    <Content Include="app2\angular.js" />
+    <Content Include="app2\angular2.js" />
+    <Content Include="app2\index.html" />
+    <Content Include="app2\index2.html" />
+    <Content Include="app2\style.css" />
     <Content Include="test1.html" />
     <Content Include="test2.html" />
     <Content Include="test3.html" />

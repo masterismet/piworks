@@ -1,0 +1,16 @@
+﻿/* Styles go here */
+
+
+        .ui-selecting {
+            background: #ccc;
+        }
+
+        .ui-selected {
+            background: #999;
+            color: white;
+        }
+
+        li {
+            list-style: none;
+        }
+ 
