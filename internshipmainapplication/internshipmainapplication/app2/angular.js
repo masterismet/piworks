@@ -63,20 +63,22 @@ myModule.directive("dayMounths", function ($parse) {
                { "name": "Nov", "day": 30 },
                { "name": "Dec", "day": 31 }];
     return function (scope, element, attrs) {
-        var i, j = 0, id=0;
+        var i, j = 0, dokument=0;
         
         while (j < 12) {
             //for (i = 0; i < mounthdays[j].day; i++) {
                 var k = 0;
                                 
-               // while (k < 24) {
-                var content = '<br><span>{{' + id + '}}</span><span ng-click="dosomething($index)">Clicke me</span><br>';
+            // while (k < 24) {
+
+                    var content = ' <br><span>{{'+dokument+'}}</span><span ng-click="dosomething($index)">Clicke me</span><br>';
                     var listElem = angular.element(content);
                     var compileFn = $parse(listElem);
                     compileFn(scope);
                     element.append(listElem);
+
                     k++;
-                    id++;
+                    dokument++;
 
                // }
                 console.log(j);

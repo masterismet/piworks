@@ -13,10 +13,13 @@
 <body ng-app="myApp">
     <div ng-controller="TempController">
         <div ui-selectable doc-array="documents">
-            <span day-mounths>
-                <pre>{{selectedItems|json}}</pre>
-                <button ng-click="clearSelection()">Cancel</button>
-</div>
+           <!-- <span day-mounths>-->
+                <span>{{document}}</span>
+                <span ng-click="dosomething($index)">Clicke me</span>
+        </div>
+        <pre>{{selectedItems|json}}</pre>
+        <button ng-click="clearSelection()">Cancel</button>
+    </div>
     </div>
 </body>
 </html>
