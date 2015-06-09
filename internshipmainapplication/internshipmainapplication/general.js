@@ -1,10 +1,10 @@
 ﻿var app = angular.module("myapp", []);
-app.controller("maincontroller", function ($scope, $http) {
-    $http.get("a.txt").success(function (response) {
-    $scope.mounthdays=response});
-       
-});
 
+
+
+app.controller("maincontroller",function ($scope) {
+   
+});  
         app.directive("hourDay", function ($parse,$log) {
             return function (scope, element, attrs) {
                 var saat = 23;                
@@ -23,36 +23,48 @@ app.controller("maincontroller", function ($scope, $http) {
             
         });
         app.directive("dayMounth", function ($parse) {
+            var mounthdays = [
+                { "name": "jan", "day": 31 },
+                { "name": "feb", "day": 28 },
+                { "name": "Mar", "day": 31 },
+                { "name": "Apr", "day": 30 },
+                { "name": "may", "day": 31 },
+                { "name": "jun", "day": 30 },
+                { "name": "Jul", "day": 31 },
+                { "name": "Aug", "day": 31 },
+                { "name": "Seb", "day": 30 },
+                { "name": "Oct", "day": 31 },
+                { "name": "Nov", "day": 30 },
+                { "name": "Dec", "day": 31 }];           
+
             return function (scope, element, attrs) {
-                var day = 1;
-                while (day<=30) {
-                    var content = "<b>" + day + " </b>"
+                var i,j=0;
+                while (j < 12) {
+                    var content = '<table><tr>'; 
                     var listElem = angular.element(content);
                     var compileFn = $parse(listElem);
                     compileFn(scope);
                     element.append(listElem);
-                    day = day + 1;
-                    console.log("burası tamam");
-
-                }
-            }
-           
-        });
-
-        app.directive("mounthDays", function ($compile) {
-
-
-           return function (scope, element, attrs) {
-               var content = "<ul><li ng-repeat='text in mounthdays'>{{text.name}}-{{text.day}}</li></ul>"
-               //var content = '"<ul><li>"+$scope.mounthdays[i].name +"<br>" + (j) +"</li></u>"';
-               var listElem = angular.element(content);
-               var compileFn = $compile(listElem);
-               compileFn(scope);
-               element.append(listElem);
-               console.log("compile işe yaradı  burası tamam");
-           }
-            var text = scope    
+                for(i=0;i<mounthdays[j].day; i++){
                
-        });
+                    var content = '<td style="width:20px" class="mytable"> ismet &nbsp; </td>';   
+                    var listElem = angular.element(content);
+                    var compileFn = $parse(listElem);
+                    compileFn(scope);
+                    element.append(listElem);
+                    
+                }
+                var content = '</table></tr>';
+                var listElem = angular.element(content);
+                var compileFn = $parse(listElem);
+                compileFn(scope);
+                element.append(listElem);
+                j=j+1;
+                }                
+
+   } // end of return
+ });
+
+        
         
     

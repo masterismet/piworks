@@ -1,24 +1,18 @@
-﻿body {
-
-
-}
-.mainframe{
-    background-color:gray;
+﻿.frame{
+    width:400px;
+    height:450px;
+    margin:40px;
+    padding:40px;
+    border: 1px solid black;
    
-
 }
 
-.daymounth{
-    margin-left:50%;
-    background-color:black;
-    width:500px;
-    height:100px;    
+.selectiondiv{
+    border:2px solid white;
+    background:#1B94E0;
+    opacity:0.4;
+    filter:alpha(opacity=40);
+    margin:0px;
+    padding:0px;
+    display:none;
 }
-.daymounth.span
-.hourday{
-    background-color:gold;
- 
-
-
-}
-
