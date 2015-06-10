@@ -12,93 +12,41 @@
     </style>
   
   <script>
-      var webApp = angular.module('webApp', []);
+      var app = angular.module("webApp", []);
+      app.controller("VotesCtrl", function () {
+          var myArray = new Array(); // Array constructor (try to avoid)
+          // is the equivalent of:
+          var myArray = []; // Array literal (preferred way)
+          var anotherArray = [1, 5, "string", { hello: "world" }] // Array with some elements of mixed type
+          myArray.push("this"); // push a string on the stack
+          myArray.push("is", "neat", "!"); // push multiple comma separated elements, in this case 3 strings. 
 
-      //controllers
-      webApp.controller('VotesCtrl', function ($scope, Votes) {
-          $scope.votes = Votes;
-          $scope.statuses = ["Approved", "Pending", "Trash", "Spam"];
+          console.log(myArray); // prints ["this", "is", "neat", "!"]
 
-          $scope.setSelected = function () {
-              console.log("show");
+          var a = myArray.pop(); // pops the last element from the stack
+          console.log(a); // prints "!"
+          console.log(myArray); // prints ["this", "is", "neat"]
 
-          }
+          // remove n elements starting at index i from myArray, where i = 0 and n = 2 in this case.
+          // splice(i, n, k0, k1, ..., kn) modifies myArray, returns spliced chunk as an array and optionally inserts k0-kn new elements at index i.
+          var b = myArray.splice(0, 2); // not to be confused with slice()
+          console.log(b); // prints ["this", "is"]
+          console.log(myArray); // prints ["neat"]
+
+          // we can also use splice to add new elements at index i
+          myArray.splice(0, 0, "isn't", "this"); // remove n = 0 elements and insert "isn't" and "this" starting at index i = 0
+          myArray.push("?"); // push "?" at the end of the stack
+          console.log(myArray); // prints ["isn't", "this", "neat", "?"]
+
+          // we could have done last two operations in one step by doing the following
+          myArray = ["this", "is", "neat", "?"];
+          myArray.splice(0, 2, "isn't", "this");
+          console.log(myArray); // prints ["isn't", "this", "neat", "?"]
       });
 
-      //services
-      webApp.factory('Votes', [function () {
-
-          //temporary repository till integration with DB this will be translated into restful get query
-          var votes = [
-              {
-                  id: '1',
-                  created: 1381583344653,
-                  updated: '222212',
-                  ratingID: '3',
-                  rate: 5,
-                  ip: '198.168.0.0',
-                  status: 'Pending',
-              },
-              {
-                  id: '111',
-                  created: 1381583344653,
-                  updated: '222212',
-                  ratingID: '4',
-                  rate: 5,
-                  ip: '198.168.0.1',
-                  status: 'Spam'
-
-              },
-              {
-                  id: '2',
-                  created: 1382387322693,
-                  updated: '222212',
-                  ratingID: '3',
-                  rate: 1,
-                  ip: '198.168.0.2',
-                  status: 'Approved'
-
-              },
-              {
-
-                  id: '4',
-                  created: 1382387322693,
-                  updated: '222212',
-                  ratingID: '3',
-                  rate: 1,
-                  ip: '198.168.0.3',
-                  status: 'Spam'
-              }
-          ];
-
-          return votes;
-      }]);
   </script>
 </head>
 <body ng-controller='VotesCtrl'>
-    <div>
-        <ul>
-            <li class="created">
-                <a>CREATED</a>
-            </li>
-            <li class="ip">
-                <b>IP ADDRESS</b>
-            </li>
-            <li class="status">
-                <b>STATUS</b>
-            </li>
-        </ul>
-        <ul ng-repeat="vote in votes" ng-click="setSelected()">
-            <li class="created">
-                {{vote.created|date}}
-            </li>
-            <li class="ip">
-                {{vote.ip}}
-            </li>
-            <li class="status">
-                {{vote.status}}
-            </li>
-        </ul>
-    </div>
+    
 </body>
 </html>
