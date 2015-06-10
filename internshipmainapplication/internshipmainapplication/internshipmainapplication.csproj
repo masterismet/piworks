@@ -71,7 +71,7 @@
     <Content Include="app1\mainpage.html" />
     <Content Include="app1\multipleselection.html" />
     <Content Include="app1\style.css" />
-    <Content Include="app2\angular.js" />
+    <Content Include="app2\angcode.js" />
     <Content Include="app2\angular2.js" />
     <Content Include="app2\index.html" />
     <Content Include="app2\index2.html" />

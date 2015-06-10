@@ -8,6 +8,7 @@ myModule.directive('uiSelectable', function ($parse) {
             scope.$on('clearselection', function (event, document) {
                 element.find('.ui-selected').removeClass('ui-selected')
             });
+            console.log("burası tammam");
 
             element.selectable({
                 stop: function (evt, ui) {
@@ -64,14 +65,14 @@ myModule.directive("dayMounths", function ($parse) {
                { "name": "Dec", "day": 31 }];
     return function (scope, element, attrs) {
         var i, j = 0, dokument=0;
-        
+        console.log("diziyi okudu");
         while (j < 12) {
             //for (i = 0; i < mounthdays[j].day; i++) {
                 var k = 0;
                                 
             // while (k < 24) {
 
-                    var content = ' <br><span>{{'+dokument+'}}</span><span ng-click="dosomething($index)">Clicke me</span><br>';
+                    var content = ' <br><span>{{'+document+'}}</span><span ng-click="dosomething($index)">Clicke me</span><br>';
                     var listElem = angular.element(content);
                     var compileFn = $parse(listElem);
                     compileFn(scope);
