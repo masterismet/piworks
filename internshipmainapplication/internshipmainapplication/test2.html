@@ -1,39 +1,22 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+﻿<html ng-app="app">
 <head>
     <title></title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
     <script src="angular.min.js"></script>
     <script>
-        var app = angular.module("myapp", []);
-        app.controller("myController", function ($scope, $http) {
-            var url="a.txt";
-            var arraya = [];
-            var mounths=[];          
-           
-            $http.get(url).success(function (response) {
-                $scope.mounths=response;
-            })
-       // $scope.arraya.concat(mounths);
-            
+        var app = angular.module('app', []);
+        app.controller('Test', function ($scope) {
+            $scope.items = [{ name: 'one', age: 30 }, { name: 'two', age: 27 }, { name: 'three', age: 50 }]
         });
-        
-        
     </script>
 </head>
 <body>
-    <div ng-controller="myController">
-        <table>
-            
-            <tr>
-                <th> <span ng-repeat="text in arraya">{{text}}<br /></span></th>
-                <th><span ng-repeat="x in mounths">{{x}} <br /></span></th>
-            </tr>
-            
-            
-        </table>
+    <div ng-controller="Test">
+        <p>selected item is : {{selectedItem}}</p>
+        <p> age of selected item is : {{selectedItem.age}} </p>
+        <select ng-model="selectedItem" ng-options="item.name for item in items"></select>
 
 
     </div>
-
 </body>
 </html>

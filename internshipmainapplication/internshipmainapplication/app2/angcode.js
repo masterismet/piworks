@@ -48,7 +48,7 @@ myModule.controller('TempController', ['$scope', '$rootScope', '$timeout', funct
     }
 
 }]);
-myModule.controller("dayCalculateController", function ($scope) {
+myModule.controller("dayCalculateController", function ($scope,$parse) {
     var mounthlenghts = [
                { "name": "jan", "day": 31 },
                { "name": "feb", "day": 28 },
@@ -62,6 +62,7 @@ myModule.controller("dayCalculateController", function ($scope) {
                { "name": "Oct", "day": 31 },
                { "name": "Nov", "day": 30 },
                { "name": "Dec", "day": 31 }];
+   //$scope.hours = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
     var arraya = new Array();
     arraya = [];
@@ -71,19 +72,20 @@ myModule.controller("dayCalculateController", function ($scope) {
     arrayc = [];
     var object = [];
     // var documents= new 
-    var i, j = 10;
+    var i, j =10;
     while (j < 12) {
         for (i = 0; i < mounthlenghts[j].day; i++) {
-            var k = 0;
+            var k = 20;
             while (k < 24) {
                 object = {
-                    hour: i,
-                    day: k,
+                    hour: k,
+                    day: i,
                     "name": mounthlenghts[j].name,
                 }
                 arraya.push(object);
-                k++;
-            }
+                $scope.document = $parse('object');
+               k++;
+           }
 
         }
 
@@ -91,20 +93,61 @@ myModule.controller("dayCalculateController", function ($scope) {
 
     }
     $scope.documents = arrayc.concat(arraya, arrayb);
-    console.log(arraya.day);
+   
+    
 
 });
 
-  myModule.directive("evalExpression", function ($compile) {    
-     
-           return function (scope, element, attrs) {
-            //   var content = "<ul><li ng-repeat='city in documents '>{{city}}</li></ul>"
-            var content = '<div class="parent" ng-repeat="document in documents"><span>{{document}}</span><span ng-click="dosomething($index)">Clicke me</span></div>';
+  /*myModule.directive("evalExpression", function ($parse) {    
+      var mounthlenghts = [
+                { "name": "jan", "day": 31 },
+                { "name": "feb", "day": 28 },
+                { "name": "Mar", "day": 31 },
+                { "name": "Apr", "day": 30 },
+                { "name": "may", "day": 31 },
+                { "name": "jun", "day": 30 },
+                { "name": "Jul", "day": 31 },
+                { "name": "Aug", "day": 31 },
+                { "name": "Seb", "day": 30 },
+                { "name": "Oct", "day": 31 },
+                { "name": "Nov", "day": 30 },
+                { "name": "Dec", "day": 31 }];
+
+      var content = '';
+      var documentt = [];
+      var temp;
+      var object = [];
+      // var documents= new 
+      var i, j = 10;
+      while (j < 12) {
+          for (i = 0; i < mounthlenghts[j].day; i++) {
+              var k = 20;
+              while (k < 24) {
+                  documentt = {
+                      hour: i,
+                      day: k,
+                      "name": mounthlenghts[j].name,
+                  }
+                  //arraya.push(object);
+                  $scope.document = $parse('documentt');                  
+                  k++;
+              }
+
+          }
+
+          j++;
+
+      }
+      /*$scope.name = 'Manish';
+$interpolate(string)($scope);
+      /*
+      return function (scope, element, attrs) {
             var listElem = angular.element(content);
             var compileFn = $compile(listElem);
             compileFn(scope);
             element.append(listElem);
         }
-      
-  });
- 
+
+        });
+      */
+  

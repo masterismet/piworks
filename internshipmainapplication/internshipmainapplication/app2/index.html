@@ -15,15 +15,23 @@
     <div ng-controller="TempController">
         <div ng-controller="dayCalculateController">
             <div ui-selectable doc-array="documents">
-               <div class="parent" ng-repeat="document in documents">
-                    <span>{{document}}</span>
-                    <span ng-click="dosomething($index)">Clicke me</span>
-                </div>
-              <!--   <span eval-expression></span>-->
+                <!-- <div class="parent" ng-repeat="document in documents">
+             <div ng-repeat="hour in hours" >
+                 <span>{{document.day}}</span> <span ng-click="dosomething($index)">Clicke me</span>
+             </div>
+         </div>   -->
+                <span>{{document}}</span>
+                <span ng-click="dosomething($index)">Clicke me</span>
+
+                <!--<span eval-expression><span ng-click="dosomething($index)">Clicke me</span><br></span>-->
                 <pre>{{selectedItems|json}}</pre>
                 <button ng-click="clearSelection()">Cancel</button>
             </div>
-           
+                    
+              
+
+            
+
         </div>
     </div>
    
