@@ -13,15 +13,17 @@
 </head>
 <body ng-app="myApp">
     <div ng-controller="TempController">
-        <div ui-selectable doc-array="documents">
-         <!--    <div class="parent" ng-repeat="document in documents">
-                <span>{{document.day}}</span>
-                <span ng-click="dosomething($index)"></span>  
-             </div> -->
-            <div>Interpolate: {{interpolate}}</div>
+        <div ng-controller="dayCalculateController">
+            <div ui-selectable doc-array="documents">
+               <div class="parent" ng-repeat="document in documents">
+                    <span>{{document}}</span>
+                    <span ng-click="dosomething($index)">Clicke me</span>
+                </div>
+              <!--   <span eval-expression></span>-->
+                <pre>{{selectedItems|json}}</pre>
+                <button ng-click="clearSelection()">Cancel</button>
+            </div>
            
-            <pre>{{selectedItems|json}}</pre>
-            <button ng-click="clearSelection()">Cancel</button>
         </div>
     </div>
    
