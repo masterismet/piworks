@@ -95,7 +95,7 @@ myModule.controller("dayCalculateController", function ($scope,$parse) {
     $scope.documents = arrayc.concat(arraya, arrayb);
    
     
-
+    // here is so important plss give more attention , good luck
 });
 
   /*myModule.directive("evalExpression", function ($parse) {    
