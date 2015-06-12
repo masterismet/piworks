@@ -25,6 +25,31 @@ myModule.directive('uiSelectable', function ($parse) {
         }
     }
 });
+myModule.directive('uiSelectable2', function ($parse) {
+    return {
+        link: function (scope, element, attrs, ctrl) {
+
+            scope.$on('clearselection', function (event, hour) {
+                element.find('.ui-selected').removeClass('ui-selected')
+            });
+            console.log("burası tammam");
+
+            element.selectable({
+                stop: function (evt, ui) {
+                    var collection = scope.$eval(attrs.docArray)
+                    var selected = element.find('div.parent.ui-selected').map(function () {
+                        var idx = $(this).index();
+                        return { document: collection[idx] }
+                    }).get();
+
+                    scope.selectedItems = selected;
+                    scope.$apply()
+                }
+            });
+        }
+    }
+});
+
 
 myModule.controller('TempController', ['$scope', '$rootScope', '$timeout', function ($scope, $rootScope, $timeout) {   
 
@@ -62,7 +87,7 @@ myModule.controller("dayCalculateController", function ($scope,$parse) {
                { "name": "Oct", "day": 31 },
                { "name": "Nov", "day": 30 },
                { "name": "Dec", "day": 31 }];
-   //$scope.hours = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+    $scope.hours = ["0", "1", "2", "3", "4"];//, "5", "6", "7", "8", "9", "10","11","12","13","14","15","16","17","18","19","20","21","22","23"];
 
     var arraya = new Array();
     arraya = [];
@@ -76,18 +101,18 @@ myModule.controller("dayCalculateController", function ($scope,$parse) {
     while (j < 12) {
         for (i = 0; i < mounthlenghts[j].day; i++) {
             var k = 20;
-            while (k < 24) {
+           // while (k < 24) {
                 object = {
-                    hour: k,
+                   // hour: k,
                     day: i,
                     "name": mounthlenghts[j].name,
                 }
                 arraya.push(object);
                 $scope.document = $parse('object');
-               k++;
+             //  k++;
            }
 
-        }
+       // }
 
         j++;
 
