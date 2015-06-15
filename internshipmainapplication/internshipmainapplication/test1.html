@@ -53,10 +53,11 @@
                 }, 100);
             }
 
-            $scope.dosomething = function (index) {
+            $scope.dosomething = function (index) {                
                 console.log('You clicked ' + index);
 
             }
+           
 
         }]);
         myModule.controller("dayCalculateController", function ($scope, $parse) {
@@ -88,7 +89,7 @@
                 for (i = 0; i < mounthlenghts[j].day; i++) {                  
                     
                     object = {
-                        hour:44,
+                        hour:[],
                         day: i,
                         "name": mounthlenghts[j].name,
                     }
@@ -118,15 +119,19 @@
             <div class="icerik">
                 <div ui-selectable doc-array="documents" ui-selectable doc-array="document">
 
-                    <div ng-repeat="x in hours"  class="parent">
-
+                 
+                    <div ng-repeat="x in hours">
                         <div ng-repeat="document in documents" style="float:left; margin:auto" class="parent">
+
                             <ul>
-                                <li ng-click="dosomething($index)"><span ng-click="document.hour=x">x</span></li>
-                                
+                                <li ><span ng-click="dosomething($index)">{{x}}{{document.hour.push(x)}}</span></li>
+                               
+
                             </ul>
                         </div>
                     </div>
+                 
+                  
                     <br /><br /><br />
                     <pre>{{selectedItems|json}}</pre>
                     <br /><br />
