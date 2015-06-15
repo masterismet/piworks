@@ -6,11 +6,11 @@
     <script src="http://code.jquery.com/jquery-2.0.3.min.js" data-semver="2.0.3" data-require="jquery@*"></script>
     <link data-require="jqueryui@*" data-semver="1.10.0" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
     <script data-require="jqueryui@*" data-semver="1.10.0" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
-    <script data-require="angular.js@1.2.11" data-semver="1.2.11" src="http://code.angularjs.org/1.2.11/angular.js"></script>
+  <script data-require="angular.js@1.2.11" data-semver="1.2.11" src="http://code.angularjs.org/1.2.11/angular.js"></script>
     <link rel="stylesheet" href="teststyle.css" />
+   
     
     <script>
-        // Code goes here
         var myModule = angular.module('myApp', []);
 
         myModule.directive('uiSelectable', function ($parse) {
@@ -20,7 +20,6 @@
                     scope.$on('clearselection', function (event, document) {
                         element.find('.ui-selected').removeClass('ui-selected')
                     });
-                    console.log("burası tammam");
 
                     element.selectable({
                         stop: function (evt, ui) {
@@ -37,9 +36,11 @@
                 }
             }
         });
-          myModule.controller('TempController', ['$scope', '$rootScope', '$timeout', function ($scope, $rootScope, $timeout) {
 
-            /// other operations
+        myModule.controller('TempController', ['$scope', '$rootScope', '$timeout', function ($scope, $rootScope, $timeout) {
+
+           
+
             $scope.selectedItems = [];
             $scope.$watch('selectedItems', function (data) {
 
@@ -53,12 +54,11 @@
                 }, 100);
             }
 
-            $scope.dosomething = function (index) {                
+           /* $scope.dosomething = function (index) {
                 console.log('You clicked ' + index);
 
             }
-           
-
+            */
         }]);
         myModule.controller("dayCalculateController", function ($scope, $parse) {
             var mounthlenghts = [
@@ -82,27 +82,25 @@
             arrayb = [];
             var arrayc = new Array();
             arrayc = [];
-            var object = [];
-            // var documents= new 
-            var i=20, j = 10;
+            var object = [];         
+            var i, j = 0;
             while (j < 12) {
-                for (i = 0; i < mounthlenghts[j].day; i++) {                  
+                for (i = 20; i < mounthlenghts[j].day; i++) {                  
                     
                     object = {
                         hour:[],
                         day: i,
                         "name": mounthlenghts[j].name,
                     }
-                    arraya.push(object);
-                   // $scope.document = $parse('object');
+                    arraya.push(object);                 
                     
                 }             
 
-                j++;
+                j=j+1;
 
             }
             $scope.documents = arrayc.concat(arraya, arrayb);
-            console.log(arraya);
+           //console.log(arraya);
 
 
             // here is so important plss give more attention , good luck
@@ -115,30 +113,20 @@
 <body ng-app="myApp">
     <div ng-controller="TempController">
         <div ng-controller="dayCalculateController">
-
             <div class="icerik">
-                <div ui-selectable doc-array="documents" ui-selectable doc-array="document">
+                <div ui-selectable doc-array="documents">
+                        <div ng-repeat="x in hours">
 
-                 
-                    <div ng-repeat="x in hours">
-                        <div ng-repeat="document in documents" style="float:left; margin:auto" class="parent">
-
-                            <ul>
-                                <li ><span ng-click="dosomething($index)">{{x}}{{document.hour.push(x)}}</span></li>
-                               
-
-                            </ul>
+                            <div ng-repeat="document in documents" style="display: block; ">
+                                <div class="parent" style="width: 25px; height: 25px; float: left; margin: auto" >{{x}}</div><!--ng-click="document.hour.push(x)"-->
+                            </div>
                         </div>
                     </div>
-                 
-                  
-                    <br /><br /><br />
-                    <pre>{{selectedItems|json}}</pre>
-                    <br /><br />
-                    <button ng-click="clearSelection()">Cancel</button>
 
                 </div>
-            </div>
+            <button ng-click="clearSelection()">Cancel</button>
+            <pre>{{selectedItems|json}}</pre>
+               
 
             </div>
             </div>
