@@ -7,16 +7,18 @@ myModule.directive('uiSelectable', function ($parse) {
             scope.$on('clearselection', function (event, document) {
                 element.find('.ui-selected').removeClass('ui-selected')
             });
-            console.log("burası tammam");
+           
 
             element.selectable({
                 stop: function (evt, ui) {
                     var collection = scope.$eval(attrs.docArray)
-                    var selected = element.find('div.parent.ui-selected').map(function () {
+                    var selected = element.find('div.parent.ui-selected');
+                    console.log(selected);
+                       /* .map(function () {
                         var idx = $(this).index();
                         return { document: collection[idx] }
                     }).get();
-
+                    */
                     scope.selectedItems = selected;
                     scope.$apply()
                 }
@@ -43,11 +45,6 @@ myModule.controller('TempController', ['$scope', '$rootScope', '$timeout', funct
         }, 100);
     }
 
-    $scope.setHour = function (document) {
-        var update = document.hour;
-        update.push($scope.hour);
-        console.log(update);
-    }
    
    
 }]);
@@ -77,15 +74,12 @@ myModule.controller("dayCalculateController", function ($scope, $parse) {
     var day, mounth = 10;
     while (mounth < 12) {
         for (day = 1; day <= mounthlenghts[mounth].day; day++) {
-    time = {
-                hour: [],
+    time = {               
                 day: day,
                 "mounth": mounthlenghts[mounth].name,
             }
              arraya.push(time);
-           //  $scope.documents.push(time);
-           // $scope.document = $parse('time');
-
+           
         }
 
        mounth++;

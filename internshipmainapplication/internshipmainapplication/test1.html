@@ -57,6 +57,15 @@
 
         }]);
         myModule.controller("dayCalculateController", function ($scope, $parse) {
+
+           
+  
+            //max number of cols
+
+            $scope.startNewCol = function (index, count) {
+                return ((index) % count) === 0;
+            };
+        
             var mounthlenghts = [
                        { "name": "jan", "day": 31 },
                        { "name": "feb", "day": 28 },
@@ -92,12 +101,11 @@
                         }
                         arraya.push(time);
                         h--;
-                        x++;
+                       
                     }
+                    x++;
                    
-                    //  $scope.documents.push(time);
-                    // $scope.document = $parse('time');
-
+                   
                 }
 
                 mounth++;
@@ -105,6 +113,7 @@
             }
             $scope.documents = arrayc.concat(arraya, arrayb);
             console.log(x);
+            $scope.columnBreak = x;
 
             // here is so important plss give more attention , good luck
         });
@@ -117,21 +126,27 @@
 <body ng-app="myApp">
                     <div ng-controller="TempController">
                         <div ng-controller="dayCalculateController">
-                           
                             <div class="icerik">
+                                <div ui-selectable doc-array="documents">
 
-                                <div ui-selectable doc-array="documents">                                 
+                                    <div class="parent"
+                                         ng-class="{'new-col': startNewCol($index, columnBreak) }"
+                                         ng-repeat="document in documents">
+                                        {{document.hour}}
 
-                                        <div class="parent" ng-repeat="document in documents">
-                                            <span >{{document.hour}}</span>
-                                        </div> 
-                                    <button ng-click="clearSelection()">Cancel</button>
-                                    <pre>{{selectedItems|json}}</pre>                                     
+                                    </div>
                                 </div>
-                                
+
+
                             </div>
-                             
+                                <button ng-click="clearSelection()">Cancel</button>
+                                <pre>{{selectedItems|json}}</pre> 
                         </div>
-                        </div>
+                    </div>
 </body>
 </html>
+<!--          <div class="parent" ng-repeat="document in documents">
+              <span >{{document.hour}}</span>
+          </div>
+
+    -->

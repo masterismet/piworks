@@ -47,3 +47,15 @@
             list-style: none;
         }
 
+.parent {
+  margin-right: 3px;
+  margin-bottom: 3px;
+  float: left;
+  width: 70px;
+  text-align: left;
+}
+
+.new-row {
+  clear: left;
+ 
+}

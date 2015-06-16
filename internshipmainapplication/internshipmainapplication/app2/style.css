@@ -46,11 +46,17 @@
         li {
             list-style: none;
         }
-        .parent{
-            width: 30px; 
-            height: 25px;
-             float: left; 
-             margin: auto;
+        
 
-        }
+        .parent {
+  margin-right: 3px;
+  margin-bottom: 3px;
+  float: left;
+  width: 70px;
+  text-align: left;
+}
 
+.new-row {
+  clear: left;
+ 
+}
