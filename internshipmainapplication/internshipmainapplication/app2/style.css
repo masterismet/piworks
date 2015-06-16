@@ -1,4 +1,37 @@
-﻿/* Styles go here */
+﻿      .icerik{
+
+            font-family:Verdana;
+            font-size:11px;
+
+            SCROLLBAR-ARROW-COLOR:white; 
+
+            SCROLLBAR-DARKSHADOW-COLOR: white;
+
+            SCROLLBAR-BASE-COLOR: #6699FF;
+
+            SCROLLBAR-HIGHLIGHT-COLOR:white; 
+
+            SCROLLBAR-FACE-COLOR: #99CCFF;
+
+            SCROLLBAR-TRACK-COLOR: white;           
+
+            SCROLLBAR-3DLIGHT-COLOR: #62B0FF;
+
+            SCROLLBAR-SHADOW-COLOR: #62B0FF; 
+
+            height:60%;
+
+            width:91%;
+            overflow:scroll;
+
+            border:solid 1px #99CCFF;
+
+            background-color:White;
+
+            margin:5px;
+
+            padding:5px; 
+      }
 
 
         .ui-selecting {
@@ -13,3 +46,11 @@
         li {
             list-style: none;
         }
+        .parent{
+            width: 30px; 
+            height: 25px;
+             float: left; 
+             margin: auto;
+
+        }
+
