@@ -14,11 +14,11 @@ myModule.directive('uiSelectable', function ($parse) {
                     var collection = scope.$eval(attrs.docArray)
                     var selected = element.find('div.parent.ui-selected');
                     console.log(selected);
-                       /* .map(function () {
+                       selected.map(function () {
                         var idx = $(this).index();
                         return { document: collection[idx] }
                     }).get();
-                    */
+                    
                     scope.selectedItems = selected;
                     scope.$apply()
                 }
@@ -62,7 +62,9 @@ myModule.controller("dayCalculateController", function ($scope, $parse) {
                { "name": "Oct", "day": 31 },
                { "name": "Nov", "day": 30 },
                { "name": "Dec", "day": 31 }];
-    $scope.hours = [0, 1, 2, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
+    $scope.hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+    var maparray = new Array();
+   
 
     var arraya = new Array();
     arraya = [];
