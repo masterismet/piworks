@@ -19,10 +19,10 @@
 
             SCROLLBAR-SHADOW-COLOR: #62B0FF; 
 
-            height:auto;
+            height:60%;
 
-            width:80%;
-            overflow:auto;
+            width:auto;
+            overflow:scroll;
 
             border:solid 1px #99CCFF;
 

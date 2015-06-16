@@ -54,11 +54,12 @@
                 }, 100);
             }
 
-           /* $scope.dosomething = function (index) {
-                console.log('You clicked ' + index);
+           $scope.dosomething = function (index) {
+               console.log('You clicked ' + index);
+               //$scope.document.hour.push(x);
 
             }
-            */
+            
         }]);
         myModule.controller("dayCalculateController", function ($scope, $parse) {
             var mounthlenghts = [
@@ -74,7 +75,7 @@
                        { "name": "Oct", "day": 31 },
                        { "name": "Nov", "day": 30 },
                        { "name": "Dec", "day": 31 }];
-            $scope.hours = [0, 1, 2, 3, 4];//, "5", "6", "7", "8", "9", "10","11","12","13","14","15","16","17","18","19","20","21","22","23"];
+            $scope.hours = [0, 1, 2, 3, 4]//,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
 
             var arraya = new Array();
             arraya = [];
@@ -85,7 +86,7 @@
             var object = [];         
             var i, j = 0;
             while (j < 12) {
-                for (i = 20; i < mounthlenghts[j].day; i++) {                  
+                for (i = 0; i < mounthlenghts[j].day; i++) {                  
                     
                     object = {
                         hour:[],
@@ -117,8 +118,9 @@
                 <div ui-selectable doc-array="documents">
                         <div ng-repeat="x in hours">
 
-                            <div ng-repeat="document in documents" style="display: block; ">
-                                <div class="parent" style="width: 25px; height: 25px; float: left; margin: auto" >{{x}}</div><!--ng-click="document.hour.push(x)"-->
+                            <div ng-repeat="document in documents" style="display: block;">
+                                <div class="parent" style="width: 25px; height: 25px; float: left; margin: auto" ng-click="dosomething($indexs)">{{x}}<span ng-click="document.hour.push(x)"></span></div>
+                                <!--ng-click="document.hour.push(x)"-->
                             </div>
                         </div>
                     </div>
