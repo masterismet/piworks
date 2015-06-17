@@ -1,62 +1,27 @@
-﻿      .icerik{
-
-            font-family:Verdana;
-            font-size:11px;
-
-            SCROLLBAR-ARROW-COLOR:white; 
-
-            SCROLLBAR-DARKSHADOW-COLOR: white;
-
-            SCROLLBAR-BASE-COLOR: #6699FF;
-
-            SCROLLBAR-HIGHLIGHT-COLOR:white; 
-
-            SCROLLBAR-FACE-COLOR: #99CCFF;
-
-            SCROLLBAR-TRACK-COLOR: white;           
-
-            SCROLLBAR-3DLIGHT-COLOR: #62B0FF;
-
-            SCROLLBAR-SHADOW-COLOR: #62B0FF; 
-
-            height:60%;
-
-            width:91%;
-            overflow:scroll;
-
-            border:solid 1px #99CCFF;
-
-            background-color:White;
-
-            margin:5px;
-
-            padding:5px; 
-      }
-
-
-        .ui-selecting {
-            background: #ccc;
+﻿section {
+            
         }
 
-        .ui-selected {
-            background: #999;
-            color: white;
+            section div {
+                border: 1px solid #333;
+                margin: 4px;
+                width: 48px;
+                height: 48px;
+                float: left;
+            }
+
+                section div.mark {
+                    background: blue;
+                }
+
+        div.selection {
+            border: 1px solid royalblue;
+            background: rgba(65, 105, 225, 0.2);
+            position: absolute;
+            z-index: 9;
         }
 
-        li {
-            list-style: none;
-        }
-        
-
-        .parent {
-  margin-right: 3px;
-  margin-bottom: 3px;
-  float: left;
-  width: 70px;
-  text-align: left;
-}
-
-.new-row {
-  clear: left;
- 
-}
+            div.selection.hide {
+                display: none;
+            }
+  
