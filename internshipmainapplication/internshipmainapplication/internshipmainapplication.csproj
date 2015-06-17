@@ -76,6 +76,9 @@
     <Content Include="app2\index.html" />
     <Content Include="app2\index2.html" />
     <Content Include="app2\style.css" />
+    <Content Include="app3\angularcode.js" />
+    <Content Include="app3\index.html" />
+    <Content Include="app3\jquerycode.js" />
     <Content Include="test1.html" />
     <Content Include="test2.html" />
     <Content Include="test3.html" />
@@ -85,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

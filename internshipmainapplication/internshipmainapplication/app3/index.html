@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+    <html ng-app="myApp">
+<head>
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.11/angular.js"></script>
+    <script src="jquerycode.js"></script>
+    <script src="angularcode.js"></script>
+</head>
+<body class="container">
+    <div ng-controller="dayCalculateController">
+        
+        <form id="demoform" action="#" method="post">
+          <!--  <div ng-repeat="hour in hours"> </div>-->
+                <select multiple="multiple" name="duallistbox_demo1[]">
+                    <!--   <option eval-expression></option>-->
+                    <div ng-repeat="hour in hours">
+                        <option value="1">option1</option>
+                        <option value="1">option1</option>
+                        <option value="1">option2</option>
+                        <option value="2">option3 </option>
+                        <option value="3">option3</option>
+                        </div>
+</select>
+            
+            <br>
+            <button type="submit" class="btn btn-default btn-block">Submit data</button>
+        </form>
+        <script>
+            var demo1 = $('select[name="duallistbox_demo1[]"]').bootstrapDualListbox();
+            $("#demoform").submit(function () {
+                alert($('[name="duallistbox_demo1[]"]').val());
+                return false;
+            });
+        </script>
+    </div>
+</body>
+</html>
+

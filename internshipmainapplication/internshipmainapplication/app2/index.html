@@ -16,18 +16,19 @@
         <div ng-controller="dayCalculateController">
             <div ng-repeat="hour in hours" style="display:block">
                 <section>
+
                     <div ng-repeat="document in documents">
                         {{document.day}}
                     </div>
                 </section>
-                
+                <div class="selection hide"></div>  
 
             </div>
-            <div ui-selectable doc-array="documents">
+       <!--    <div ui-selectable doc-array="documents">
                 <div class="selection hide"></div>  
                 <button ng-click="clearSelection()">Cancel</button>
                 <pre>{{selectedItems|json}}</pre>              
-            </div>
+            </div>--> 
 
 
         </div>       
