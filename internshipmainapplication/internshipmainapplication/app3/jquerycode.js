@@ -11,7 +11,7 @@
       selectedListLabel: false,                                                          
       nonSelectedListLabel: false,                                                       
       helperSelectNamePostfix: '_helper',                                                 
-      selectorMinimalHeight: 100,
+    //  selectorMinimalHeight: 600,
      },
     
     isBuggyAndroid = /android/i.test(navigator.userAgent.toLowerCase());

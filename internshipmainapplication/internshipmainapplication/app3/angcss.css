@@ -1,0 +1,13 @@
+﻿.leftoptbox{  
+    width:auto;
+    height:400px;
+    color:green;
+    border:solid;
+}
+.rightoptbox{
+    float:right;
+    width:auto;
+    height:400px;
+    color:green;
+    border:solid;
+}
