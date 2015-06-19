@@ -1,0 +1,26 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <title></title>
+    <script src="http://code.angularjs.org/1.2.11/angular.js"></script> 
+   
+    <script src="angcode.js"></script>    
+    <link rel="stylesheet" href="style.css" />
+    
+</head>
+<body>
+
+    <div ng-controller="MyCtrl">
+      
+        <select style="width:100%; height:700px;" class="multiselect" data-placeholder="Select Products"
+                ng-model="productSelection" ng-options="item as item.hour for item in Products"
+                multiple="multiple" multiselect-dropdown></select>
+
+
+        <p>Selection: {{productSelection}}</p>
+    </div>
+
+
+</body>
+</html>

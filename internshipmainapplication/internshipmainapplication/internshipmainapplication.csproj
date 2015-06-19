@@ -80,6 +80,8 @@
     <Content Include="app3\angularcode.js" />
     <Content Include="app3\index.html" />
     <Content Include="app3\jquerycode.js" />
+    <Content Include="app4\angcode.js" />
+    <Content Include="app4\index.html" />
     <Content Include="test1.html" />
     <Content Include="test2.html" />
     <Content Include="test3.html" />

@@ -1,5 +1,16 @@
 ﻿var myModule = angular.module('myApp', []);
-myModule.controller("dayCalculateController", function () {});
+myModule.controller("dayCalculateController", function () {
+    function isSelected(listOfItems, item) {
+        var resArr = listOfItems.split(",");
+        if (resArr.indexOf(item.toString()) > -1) {
+            console.log(resArr);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+});
 myModule.directive("evalExpression", function ($compile,$rootScope) {
     var mounthlenghts = [
               { "name": "jan", "day": 31 },
@@ -15,7 +26,9 @@ myModule.directive("evalExpression", function ($compile,$rootScope) {
               { "name": "Nov", "day": 30 },
               { "name": "Dec", "day": 31 }];
     var content = '';
-    content = content + '<select multiple="multiple" name="duallistbox_demo1[]">';
+      content = content + '<select ng-model="selectedItems" multiple ng-multiple="true" class="form-control" style="height:700px">';
+    // content= content + '<select multiple="multiple" name="duallistbox_demo1[]">';
+
     var day, mounth = 0, hour = 0, x = 0;
     var arraya = new Array();
     arraya = [];
@@ -64,12 +77,13 @@ myModule.directive("evalExpression", function ($compile,$rootScope) {
         x++;
    
     }
-   columnBreak = x;
+    columnBreak = x;
     $rootScope.documents = arrayc.concat(arraya, arrayb);
-    content = content + '<option ng-repeat="document in documents " value="{{document}}" class="parent"  ng-class="{"new-col": startNewCol($index, columnBreak) }"> {{document.hour}}</option>';
-            
+     // content = content + '<option ng-repeat="document in documents " value="{{document}}" class="parent"  ng-class="{"new-col": startNewCol($index, columnBreak) }"> {{document.hour}}</option>';
+    content = content + '<option ng-repeat="document in documents" ng-selected="isSelected(selectedItems, {{document.hour}})" value="{{document}}" class="parent"> {{document.hour}}</option></select>';
         
-    content = content + '</select>';
+    // content = content + '</select>';
+   // content = content + '</select>';
     console.log(x);
     return function (scope, element, attrs) {        
         var listElem = angular.element(content);
@@ -79,3 +93,4 @@ myModule.directive("evalExpression", function ($compile,$rootScope) {
     }
    
 });
+
