@@ -76,6 +76,7 @@
     <Content Include="app2\index.html" />
     <Content Include="app2\index2.html" />
     <Content Include="app2\style.css" />
+    <Content Include="app3\angcss.css" />
     <Content Include="app3\angularcode.js" />
     <Content Include="app3\index.html" />
     <Content Include="app3\jquerycode.js" />
