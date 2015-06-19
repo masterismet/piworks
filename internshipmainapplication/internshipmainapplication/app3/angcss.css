@@ -5,11 +5,26 @@
     float:left;
 }
 .rightoptbox{
-    margin-left:30px;
     float:right;
     color:green;
     border:solid;
+    width:25px;
+    height:25px;
 }
 .left {
   float: left;
+}
+.parent {
+  margin-right: 3px;
+  margin-bottom: 3px;
+  float: left;
+  border:solid;
+  width:20px;
+  height:20px;
+  text-align: left;
+}
+
+.new-row {
+  clear: left;
+ 
 }
