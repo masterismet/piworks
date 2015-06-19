@@ -64,9 +64,9 @@ myModule.directive("evalExpression", function ($compile,$rootScope) {
         x++;
    
     }
-    $rootScope.columnBreak = x;
+   columnBreak = x;
     $rootScope.documents = arrayc.concat(arraya, arrayb);
-    content = content + '<option ng-repeat="document in documents " value="{{document}}" class="parent"  ng-class="{'+'new-col'+': startNewCol($index, columnBreak) }"> {{document.hour}}</option>';
+    content = content + '<option ng-repeat="document in documents " value="{{document}}" class="parent"  ng-class="{"new-col": startNewCol($index, columnBreak) }"> {{document.hour}}</option>';
             
         
     content = content + '</select>';
